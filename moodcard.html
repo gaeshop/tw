@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2f3c3c">
+  <meta name="description" content="GA·E 卡意｜甲意直覺占卜，抽一張屬於此刻的心情小卡。">
+  <title>抽一張心情小卡｜GA·E 卡意</title>
+  <style>
+    :root {
+      --ink: #59402f;
+      --ink-soft: #79614e;
+      --forest: #2f3c3c;
+      --forest-2: #394949;
+      --cream: #f7efe3;
+      --paper: #fffaf2;
+      --gold: #bd9858;
+      --gold-light: #e7d2a7;
+      --rose: #b7836f;
+      --shadow: 0 24px 70px rgba(50, 38, 28, .16);
+      --radius: 30px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(231,210,167,.45), transparent 24rem),
+        radial-gradient(circle at 88% 34%, rgba(189,152,88,.16), transparent 24rem),
+        var(--cream);
+      font-family: "Noto Serif TC", "Songti TC", "PMingLiU", Georgia, serif;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    button, input { font: inherit; }
+
+    a { color: inherit; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(247, 239, 227, .88);
+      border-bottom: 1px solid rgba(132, 99, 62, .14);
+    }
+
+    .header-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: auto;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: .05em;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid rgba(189,152,88,.45);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 14px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      opacity: .78;
+    }
+
+    .nav a:hover { opacity: 1; }
+
+    .hero {
+      color: #f8edda;
+      background:
+        linear-gradient(rgba(34,46,46,.92), rgba(47,60,60,.97)),
+        radial-gradient(circle at 50% 0%, rgba(231,210,167,.22), transparent 40%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "✦";
+      position: absolute;
+      color: rgba(231,210,167,.38);
+      font-size: clamp(90px, 15vw, 220px);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .hero::before { top: 36px; left: -24px; transform: rotate(16deg); }
+    .hero::after { right: -18px; bottom: 0; transform: rotate(-14deg); }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(1100px, calc(100% - 36px));
+      min-height: 570px;
+      margin: auto;
+      padding: 88px 0 82px;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--gold-light);
+      font-family: Georgia, serif;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.18;
+      letter-spacing: .02em;
+      font-weight: 600;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+      margin: 24px 0 32px;
+      color: rgba(255,248,236,.82);
+      font-size: clamp(16px, 2vw, 19px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 24px;
+      min-height: 48px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+    .button:active { transform: translateY(0); }
+
+    .button-primary {
+      color: #3c2e22;
+      background: var(--gold-light);
+      box-shadow: 0 14px 32px rgba(0,0,0,.18);
+    }
+
+    .button-secondary {
+      color: #fff5e6;
+      background: transparent;
+      border: 1px solid rgba(255,245,230,.36);
+    }
+
+    .hero-cards {
+      position: relative;
+      min-height: 410px;
+      display: grid;
+      place-items: center;
+    }
+
+    .mini-card {
+      position: absolute;
+      width: min(245px, 52vw);
+      aspect-ratio: .67;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 28px 60px rgba(0,0,0,.34);
+      border: 1px solid rgba(255,255,255,.42);
+      background: var(--paper);
+    }
+
+    .mini-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .mini-card.one { transform: translate(-82px, 10px) rotate(-9deg); }
+    .mini-card.two { transform: translate(78px, 18px) rotate(8deg); }
+    .mini-card.three { transform: translate(0, -26px) rotate(-1deg); z-index: 3; }
+
+    .section {
+      width: min(1080px, calc(100% - 32px));
+      margin: auto;
+      padding: 92px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 42px;
+    }
+
+    .kicker {
+      color: var(--gold);
+      font-family: Georgia, serif;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    h2 {
+      margin: 8px 0 14px;
+      color: var(--forest);
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.35;
+      font-weight: 600;
+    }
+
+    .muted { color: var(--ink-soft); }
+
+    .draw-panel {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 50px;
+      align-items: center;
+      padding: clamp(24px, 5vw, 56px);
+      border-radius: var(--radius);
+      background: rgba(255,250,242,.78);
+      border: 1px solid rgba(189,152,88,.24);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .draw-panel::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border: 1px solid rgba(189,152,88,.14);
+      border-radius: 50%;
+      right: -190px;
+      top: -180px;
+    }
+
+    .ritual {
+      position: relative;
+      z-index: 2;
+    }
+
+    .ritual-step {
+      display: flex;
+      gap: 15px;
+      margin: 22px 0;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      flex: 0 0 32px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .name-label {
+      display: block;
+      margin-top: 30px;
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    .name-input {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid rgba(89,64,47,.28);
+      background: transparent;
+      padding: 12px 2px;
+      outline: 0;
+      color: var(--ink);
+      font-size: 17px;
+    }
+
+    .name-input:focus { border-color: var(--gold); }
+
+    .card-stage {
+      min-height: 640px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      z-index: 2;
+      perspective: 1400px;
+    }
+
+    .deck-stack {
+      width: min(350px, 76vw);
+      aspect-ratio: .67;
+      position: relative;
+      cursor: pointer;
+      border: 0;
+      background: transparent;
+      padding: 0;
+    }
+
+    .deck-layer,
+    .card-back {
+      position: absolute;
+      inset: 0;
+      border-radius: 25px;
+      border: 1px solid rgba(219,190,135,.7);
+      box-shadow: 0 28px 52px rgba(58,42,29,.22);
+    }
+
+    .deck-layer {
+      background: #e9d8b8;
+    }
+
+    .deck-layer:nth-child(1) { transform: translate(-16px, 9px) rotate(-4deg); opacity: .7; }
+    .deck-layer:nth-child(2) { transform: translate(15px, 7px) rotate(3deg); opacity: .86; }
+
+    .card-back {
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle, rgba(230,208,162,.12) 0 2px, transparent 2.8px) 0 0/26px 26px,
+        var(--forest);
+      color: #f2dfbb;
+    }
+
+    .card-back::before,
+    .card-back::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(231,210,167,.66);
+      border-radius: 18px;
+    }
+
+    .card-back::after {
+      inset: 29px;
+      border-style: double;
+    }
+
+    .card-back-logo {
+      width: 64%;
+      border-radius: 50%;
+      mix-blend-mode: screen;
+      opacity: .95;
+    }
+
+    .deck-instruction {
+      position: absolute;
+      left: 50%;
+      bottom: -55px;
+      transform: translateX(-50%);
+      width: max-content;
+      max-width: 90vw;
+      color: var(--ink-soft);
+      font-size: 14px;
+      letter-spacing: .05em;
+    }
+
+    .deck-stack.shuffling .deck-layer:nth-child(1) { animation: shuffleLeft .55s ease-in-out 2; }
+    .deck-stack.shuffling .deck-layer:nth-child(2) { animation: shuffleRight .55s ease-in-out 2; }
+    .deck-stack.shuffling .card-back { animation: shuffleCenter .55s ease-in-out 2; }
+
+    @keyframes shuffleLeft {
+      50% { transform: translate(-95px, -12px) rotate(-12deg); }
+    }
+    @keyframes shuffleRight {
+      50% { transform: translate(95px, 6px) rotate(12deg); }
+    }
+    @keyframes shuffleCenter {
+      50% { transform: translateY(-18px) rotate(2deg); }
+    }
+
+    .result-card {
+      width: min(390px, 80vw);
+      display: none;
+      text-align: center;
+    }
+
+    .result-card.visible { display: block; animation: reveal .8s cubic-bezier(.22,.8,.25,1); }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: rotateY(85deg) scale(.88); }
+      to { opacity: 1; transform: rotateY(0) scale(1); }
+    }
+
+    .result-image-wrap {
+      padding: 12px;
+      border-radius: 27px;
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(189,152,88,.26);
+      box-shadow: 0 30px 70px rgba(58,42,29,.2);
+    }
+
+    .result-image {
+      width: 100%;
+      display: block;
+      border-radius: 19px;
+    }
+
+    .for-you {
+      margin: 24px 0 0;
+      color: var(--forest);
+      font-size: 22px;
+    }
+
+    .result-category {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: .08em;
+    }
+
+    .result-note {
+      color: var(--ink-soft);
+      margin: 14px auto 18px;
+      max-width: 430px;
+      font-size: 14px;
+    }
+
+    .result-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .result-actions .button {
+      padding: 10px 18px;
+      min-height: 43px;
+      font-size: 14px;
+    }
+
+    .result-actions .button-primary {
+      background: var(--forest);
+      color: #fff4e3;
+    }
+
+    .result-actions .button-secondary {
+      color: var(--ink);
+      border-color: rgba(89,64,47,.28);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .info-card {
+      background: rgba(255,250,242,.7);
+      border: 1px solid rgba(189,152,88,.2);
+      border-radius: 22px;
+      padding: 28px;
+    }
+
+    .info-card strong {
+      color: var(--forest);
+      display: block;
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .quote-section {
+      width: 100%;
+      background: var(--forest);
+      color: #f8edda;
+      text-align: center;
+      padding: 84px 20px;
+    }
+
+    .quote-section blockquote {
+      max-width: 850px;
+      margin: auto;
+      font-size: clamp(27px, 4.2vw, 48px);
+      line-height: 1.55;
+    }
+
+    .quote-section small {
+      display: block;
+      margin-top: 20px;
+      color: var(--gold-light);
+      letter-spacing: .12em;
+    }
+
+    footer {
+      padding: 42px 20px 52px;
+      text-align: center;
+      color: var(--ink-soft);
+      font-size: 13px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translate(-50%, 18px);
+      background: var(--forest);
+      color: #fff7e9;
+      border-radius: 999px;
+      padding: 10px 18px;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      z-index: 100;
+      box-shadow: 0 12px 40px rgba(0,0,0,.22);
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 820px) {
+      .nav a:not(:last-child) { display: none; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 70px 0 60px;
+        gap: 30px;
+      }
+      .hero-copy { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-cards { min-height: 365px; }
+      .draw-panel { grid-template-columns: 1fr; gap: 10px; }
+      .ritual { text-align: center; }
+      .ritual-step { text-align: left; max-width: 520px; margin-left: auto; margin-right: auto; }
+      .card-stage { min-height: 600px; }
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 520px) {
+      .header-inner { min-height: 64px; }
+      .brand span { font-size: 13px; }
+      .hero-inner { min-height: auto; }
+      .hero-cards { min-height: 320px; }
+      .mini-card { width: 178px; border-radius: 16px; }
+      .mini-card.one { transform: translate(-52px, 14px) rotate(-9deg); }
+      .mini-card.two { transform: translate(52px, 20px) rotate(8deg); }
+      .section { padding: 68px 0; }
+      .draw-panel { padding: 24px 17px 40px; border-radius: 22px; }
+      .card-stage { min-height: 535px; }
+      .deck-instruction { bottom: -46px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top">
+        <img src="assets/gae-logo.png" alt="GAE 品牌標誌">
+        <span>GA·E 卡意｜甲意直覺占卜</span>
+      </a>
+      <nav class="nav" aria-label="主要導覽">
+        <a href="#draw">抽一張</a>
+        <a href="#how">使用方式</a>
+        <a href="https://gae.tw/" target="_blank" rel="noopener">回到官網</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">Give Awareness Everyday</p>
+          <h1>讓今天的最後一張牌，<br>把你的心輕輕接回來。</h1>
+          <p class="hero-copy">
+            占卜結束後，先不要急著離開。深呼吸，憑直覺抽一張心情小卡，
+            把此刻專屬於你的訊息與祝福帶回家。
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#draw">開始抽一張</a>
+            <a class="button button-secondary" href="https://gae.tw/" target="_blank" rel="noopener">認識 GA·E</a>
+          </div>
+        </div>
+
+        <div class="hero-cards" aria-hidden="true">
+          <figure class="mini-card one"><img src="assets/cards/card-18.jpg" alt=""></figure>
+          <figure class="mini-card two"><img src="assets/cards/card-25.jpg" alt=""></figure>
+          <figure class="mini-card three"><img src="assets/cards/card-09.jpg" alt=""></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="draw">
+      <div class="section-heading">
+        <span class="kicker">A card for this moment</span>
+        <h2>抽一張屬於此刻的心情小卡</h2>
+        <p class="muted">不用想哪一張最好。當你準備好，就讓第一個直覺替你選擇。</p>
+      </div>
+
+      <div class="draw-panel">
+        <div class="ritual">
+          <p class="eyebrow" style="color:var(--gold)">Before you draw</p>
+          <h2 style="font-size:clamp(28px,4vw,40px);text-align:left">先把注意力，慢慢帶回自己。</h2>
+
+          <div class="ritual-step">
+            <span class="step-number">1</span>
+            <div><strong>深呼吸三次</strong><br><span class="muted">不用急著尋找答案，只需要感受現在的自己。</span></div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-number">2</span>
+            <div><strong>在心裡說出一個感受</strong><br><span class="muted">可以是累、期待、不安，也可以只是「我想被接住」。</span></div>
+          </div>
+          <div class="ritual-step">
+            <span class="step-number">3</span>
+            <div><strong>點一下牌背</strong><br><span class="muted">讓此刻最靠近你的訊息出現。</span></div>
+          </div>
+
+          <label class="name-label" for="guestName">今天想讓小卡怎麼稱呼你？（可不填）</label>
+          <input class="name-input" id="guestName" maxlength="20" placeholder="輸入名字或暱稱">
+        </div>
+
+        <div class="card-stage">
+          <button class="deck-stack" id="drawButton" type="button" aria-label="抽一張心情小卡">
+            <span class="deck-layer"></span>
+            <span class="deck-layer"></span>
+            <span class="card-back">
+              <img class="card-back-logo" src="assets/gae-logo.png" alt="">
+            </span>
+            <span class="deck-instruction">點一下牌背，抽出今天的訊息 ✦</span>
+          </button>
+
+          <article class="result-card" id="resultCard" aria-live="polite">
+            <div class="result-image-wrap">
+              <img class="result-image" id="resultImage" alt="">
+            </div>
+            <h3 class="for-you" id="forYou">這張卡，想送給現在的你。</h3>
+            <span class="result-category" id="resultCategory"></span>
+            <p class="result-note">這不是預言，而是一份讓你在離開前，再次看見自己力量的溫柔提醒。</p>
+            <div class="result-actions">
+              <button class="button button-primary" id="downloadButton" type="button">儲存這張小卡</button>
+              <button class="button button-secondary" id="shareButton" type="button">分享結果</button>
+              <button class="button button-secondary" id="againButton" type="button">再感受一次</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="section-heading">
+        <span class="kicker">A gentle ending</span>
+        <h2>讓占卜不只停在答案，而是成為一段完整的陪伴。</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="info-card">
+          <strong>占卜後再抽</strong>
+          <span class="muted">讓客人在對談結束後，為今天的體驗留下一個柔和的結尾。</span>
+        </div>
+        <div class="info-card">
+          <strong>電子卡帶回家</strong>
+          <span class="muted">抽到的小卡可以直接下載到手機，也能透過分享連結再次打開。</span>
+        </div>
+        <div class="info-card">
+          <strong>每次都屬於當下</strong>
+          <span class="muted">同一個人不同時間回來，也可能遇見另一句正好需要的提醒。</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-section">
+      <blockquote>
+        「我不預言，<br>我陪你看見你真正的力量。」
+      </blockquote>
+      <small>GA·E 卡意｜甲意直覺占卜・MiKA</small>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> GA·E 卡意｜甲意直覺占卜　·　
+    <a href="https://gae.tw/" target="_blank" rel="noopener">gae.tw</a>
+  </footer>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    const fallbackCards = [{"id": 1, "image": "assets/cards/card-01.jpg", "category": "給自己的溫柔", "alt": "GAE 心情小卡 01"}, {"id": 2, "image": "assets/cards/card-02.jpg", "category": "給自己的溫柔", "alt": "GAE 心情小卡 02"}, {"id": 3, "image": "assets/cards/card-03.jpg", "category": "給自己的溫柔", "alt": "GAE 心情小卡 03"}, {"id": 4, "image": "assets/cards/card-04.jpg", "category": "給自己的溫柔", "alt": "GAE 心情小卡 04"}, {"id": 5, "image": "assets/cards/card-05.jpg", "category": "給自己的溫柔", "alt": "GAE 心情小卡 05"}, {"id": 6, "image": "assets/cards/card-06.jpg", "category": "給自己的溫柔", "alt": "GAE 心情小卡 06"}, {"id": 7, "image": "assets/cards/card-07.jpg", "category": "給自己的溫柔", "alt": "GAE 心情小卡 07"}, {"id": 8, "image": "assets/cards/card-08.jpg", "category": "給自己的溫柔", "alt": "GAE 心情小卡 08"}, {"id": 9, "image": "assets/cards/card-09.jpg", "category": "給自己的溫柔", "alt": "GAE 心情小卡 09"}, {"id": 10, "image": "assets/cards/card-10.jpg", "category": "給自己的溫柔", "alt": "GAE 心情小卡 10"}, {"id": 11, "image": "assets/cards/card-11.jpg", "category": "關係與被愛", "alt": "GAE 心情小卡 11"}, {"id": 12, "image": "assets/cards/card-12.jpg", "category": "關係與被愛", "alt": "GAE 心情小卡 12"}, {"id": 13, "image": "assets/cards/card-13.jpg", "category": "關係與被愛", "alt": "GAE 心情小卡 13"}, {"id": 14, "image": "assets/cards/card-14.jpg", "category": "關係與被愛", "alt": "GAE 心情小卡 14"}, {"id": 15, "image": "assets/cards/card-15.jpg", "category": "關係與被愛", "alt": "GAE 心情小卡 15"}, {"id": 16, "image": "assets/cards/card-16.jpg", "category": "關係與被愛", "alt": "GAE 心情小卡 16"}, {"id": 17, "image": "assets/cards/card-17.jpg", "category": "關係與被愛", "alt": "GAE 心情小卡 17"}, {"id": 18, "image": "assets/cards/card-18.jpg", "category": "關係與被愛", "alt": "GAE 心情小卡 18"}, {"id": 19, "image": "assets/cards/card-19.jpg", "category": "關係與被愛", "alt": "GAE 心情小卡 19"}, {"id": 20, "image": "assets/cards/card-20.jpg", "category": "關係與被愛", "alt": "GAE 心情小卡 20"}, {"id": 21, "image": "assets/cards/card-21.jpg", "category": "自我價值", "alt": "GAE 心情小卡 21"}, {"id": 22, "image": "assets/cards/card-22.jpg", "category": "自我價值", "alt": "GAE 心情小卡 22"}, {"id": 23, "image": "assets/cards/card-23.jpg", "category": "自我價值", "alt": "GAE 心情小卡 23"}, {"id": 24, "image": "assets/cards/card-24.jpg", "category": "自我價值", "alt": "GAE 心情小卡 24"}, {"id": 25, "image": "assets/cards/card-25.jpg", "category": "自我價值", "alt": "GAE 心情小卡 25"}, {"id": 26, "image": "assets/cards/card-26.jpg", "category": "自我價值", "alt": "GAE 心情小卡 26"}, {"id": 27, "image": "assets/cards/card-27.jpg", "category": "自我價值", "alt": "GAE 心情小卡 27"}, {"id": 28, "image": "assets/cards/card-28.jpg", "category": "自我價值", "alt": "GAE 心情小卡 28"}, {"id": 29, "image": "assets/cards/card-29.jpg", "category": "自我價值", "alt": "GAE 心情小卡 29"}, {"id": 30, "image": "assets/cards/card-30.jpg", "category": "自我價值", "alt": "GAE 心情小卡 30"}, {"id": 31, "image": "assets/cards/card-31.jpg", "category": "祝福與豐盛", "alt": "GAE 心情小卡 31"}, {"id": 32, "image": "assets/cards/card-32.jpg", "category": "祝福與豐盛", "alt": "GAE 心情小卡 32"}, {"id": 33, "image": "assets/cards/card-33.jpg", "category": "祝福與豐盛", "alt": "GAE 心情小卡 33"}, {"id": 34, "image": "assets/cards/card-34.jpg", "category": "祝福與豐盛", "alt": "GAE 心情小卡 34"}, {"id": 35, "image": "assets/cards/card-35.jpg", "category": "祝福與豐盛", "alt": "GAE 心情小卡 35"}, {"id": 36, "image": "assets/cards/card-36.jpg", "category": "祝福與豐盛", "alt": "GAE 心情小卡 36"}, {"id": 37, "image": "assets/cards/card-37.jpg", "category": "祝福與豐盛", "alt": "GAE 心情小卡 37"}, {"id": 38, "image": "assets/cards/card-38.jpg", "category": "祝福與豐盛", "alt": "GAE 心情小卡 38"}, {"id": 39, "image": "assets/cards/card-39.jpg", "category": "祝福與豐盛", "alt": "GAE 心情小卡 39"}, {"id": 40, "image": "assets/cards/card-40.jpg", "category": "祝福與豐盛", "alt": "GAE 心情小卡 40"}, {"id": 41, "image": "assets/cards/card-41.jpg", "category": "慢慢前進", "alt": "GAE 心情小卡 41"}, {"id": 42, "image": "assets/cards/card-42.jpg", "category": "慢慢前進", "alt": "GAE 心情小卡 42"}, {"id": 43, "image": "assets/cards/card-43.jpg", "category": "慢慢前進", "alt": "GAE 心情小卡 43"}, {"id": 44, "image": "assets/cards/card-44.jpg", "category": "慢慢前進", "alt": "GAE 心情小卡 44"}, {"id": 45, "image": "assets/cards/card-45.jpg", "category": "慢慢前進", "alt": "GAE 心情小卡 45"}, {"id": 46, "image": "assets/cards/card-46.jpg", "category": "慢慢前進", "alt": "GAE 心情小卡 46"}, {"id": 47, "image": "assets/cards/card-47.jpg", "category": "慢慢前進", "alt": "GAE 心情小卡 47"}, {"id": 48, "image": "assets/cards/card-48.jpg", "category": "慢慢前進", "alt": "GAE 心情小卡 48"}, {"id": 49, "image": "assets/cards/card-49.jpg", "category": "慢慢前進", "alt": "GAE 心情小卡 49"}, {"id": 50, "image": "assets/cards/card-50.jpg", "category": "慢慢前進", "alt": "GAE 心情小卡 50"}, {"id": 51, "image": "assets/cards/card-51.jpg", "category": "安心成長", "alt": "GAE 心情小卡 51"}, {"id": 52, "image": "assets/cards/card-52.jpg", "category": "安心成長", "alt": "GAE 心情小卡 52"}, {"id": 53, "image": "assets/cards/card-53.jpg", "category": "安心成長", "alt": "GAE 心情小卡 53"}, {"id": 54, "image": "assets/cards/card-54.jpg", "category": "安心成長", "alt": "GAE 心情小卡 54"}, {"id": 55, "image": "assets/cards/card-55.jpg", "category": "安心成長", "alt": "GAE 心情小卡 55"}, {"id": 56, "image": "assets/cards/card-56.jpg", "category": "安心成長", "alt": "GAE 心情小卡 56"}, {"id": 57, "image": "assets/cards/card-57.jpg", "category": "安心成長", "alt": "GAE 心情小卡 57"}, {"id": 58, "image": "assets/cards/card-58.jpg", "category": "安心成長", "alt": "GAE 心情小卡 58"}, {"id": 59, "image": "assets/cards/card-59.jpg", "category": "安心成長", "alt": "GAE 心情小卡 59"}, {"id": 60, "image": "assets/cards/card-60.jpg", "category": "安心成長", "alt": "GAE 心情小卡 60"}, {"id": 61, "image": "assets/cards/card-61.jpg", "category": "陪伴與守護", "alt": "GAE 心情小卡 61"}, {"id": 62, "image": "assets/cards/card-62.jpg", "category": "陪伴與守護", "alt": "GAE 心情小卡 62"}, {"id": 63, "image": "assets/cards/card-63.jpg", "category": "陪伴與守護", "alt": "GAE 心情小卡 63"}, {"id": 64, "image": "assets/cards/card-64.jpg", "category": "陪伴與守護", "alt": "GAE 心情小卡 64"}, {"id": 65, "image": "assets/cards/card-65.jpg", "category": "陪伴與守護", "alt": "GAE 心情小卡 65"}, {"id": 66, "image": "assets/cards/card-66.jpg", "category": "陪伴與守護", "alt": "GAE 心情小卡 66"}, {"id": 67, "image": "assets/cards/card-67.jpg", "category": "陪伴與守護", "alt": "GAE 心情小卡 67"}, {"id": 68, "image": "assets/cards/card-68.jpg", "category": "陪伴與守護", "alt": "GAE 心情小卡 68"}, {"id": 69, "image": "assets/cards/card-69.jpg", "category": "陪伴與守護", "alt": "GAE 心情小卡 69"}, {"id": 70, "image": "assets/cards/card-70.jpg", "category": "陪伴與守護", "alt": "GAE 心情小卡 70"}, {"id": 71, "image": "assets/cards/card-71.jpg", "category": "休息與療癒", "alt": "GAE 心情小卡 71"}, {"id": 72, "image": "assets/cards/card-72.jpg", "category": "休息與療癒", "alt": "GAE 心情小卡 72"}, {"id": 73, "image": "assets/cards/card-73.jpg", "category": "休息與療癒", "alt": "GAE 心情小卡 73"}, {"id": 74, "image": "assets/cards/card-74.jpg", "category": "休息與療癒", "alt": "GAE 心情小卡 74"}, {"id": 75, "image": "assets/cards/card-75.jpg", "category": "休息與療癒", "alt": "GAE 心情小卡 75"}, {"id": 76, "image": "assets/cards/card-76.jpg", "category": "休息與療癒", "alt": "GAE 心情小卡 76"}, {"id": 77, "image": "assets/cards/card-77.jpg", "category": "休息與療癒", "alt": "GAE 心情小卡 77"}, {"id": 78, "image": "assets/cards/card-78.jpg", "category": "休息與療癒", "alt": "GAE 心情小卡 78"}, {"id": 79, "image": "assets/cards/card-79.jpg", "category": "休息與療癒", "alt": "GAE 心情小卡 79"}, {"id": 80, "image": "assets/cards/card-80.jpg", "category": "休息與療癒", "alt": "GAE 心情小卡 80"}];
+    let cards = fallbackCards;
+    let currentCard = null;
+    let lastCardId = Number(sessionStorage.getItem("gaeLastCard") || 0);
+
+    const drawButton = document.getElementById("drawButton");
+    const resultCard = document.getElementById("resultCard");
+    const resultImage = document.getElementById("resultImage");
+    const resultCategory = document.getElementById("resultCategory");
+    const forYou = document.getElementById("forYou");
+    const guestName = document.getElementById("guestName");
+    const downloadButton = document.getElementById("downloadButton");
+    const shareButton = document.getElementById("shareButton");
+    const againButton = document.getElementById("againButton");
+    const toast = document.getElementById("toast");
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    fetch("assets/cards.json")
+      .then(response => response.ok ? response.json() : Promise.reject())
+      .then(data => { cards = data; restoreFromUrl(); })
+      .catch(() => restoreFromUrl());
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    function chooseCard() {
+      const available = cards.filter(card => card.id !== lastCardId);
+      return available[Math.floor(Math.random() * available.length)];
+    }
+
+    function personalisedHeading() {
+      const name = guestName.value.trim();
+      return name
+        ? `${name}，這張卡想送給現在的你。`
+        : "這張卡，想送給現在的你。";
+    }
+
+    function drawCard() {
+      if (drawButton.classList.contains("shuffling")) return;
+
+      drawButton.classList.add("shuffling");
+      drawButton.disabled = true;
+
+      window.setTimeout(() => {
+        currentCard = chooseCard();
+        lastCardId = currentCard.id;
+        sessionStorage.setItem("gaeLastCard", String(lastCardId));
+
+        resultImage.src = currentCard.image;
+        resultImage.alt = currentCard.alt;
+        resultCategory.textContent = `心情主題｜${currentCard.category}`;
+        forYou.textContent = personalisedHeading();
+
+        drawButton.hidden = true;
+        resultCard.classList.add("visible");
+        drawButton.classList.remove("shuffling");
+        drawButton.disabled = false;
+
+        const url = new URL(window.location.href);
+        url.searchParams.set("card", currentCard.id);
+        const name = guestName.value.trim();
+        if (name) url.searchParams.set("name", name);
+        else url.searchParams.delete("name");
+        history.replaceState({}, "", url);
+      }, 1150);
+    }
+
+    function resetDraw() {
+      resultCard.classList.remove("visible");
+      drawButton.hidden = false;
+      currentCard = null;
+
+      const url = new URL(window.location.href);
+      url.searchParams.delete("card");
+      url.searchParams.delete("name");
+      history.replaceState({}, "", url);
+
+      document.querySelector(".card-stage").scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function restoreFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const cardId = Number(params.get("card"));
+      const sharedName = params.get("name");
+
+      if (sharedName) guestName.value = sharedName;
+
+      const matched = cards.find(card => card.id === cardId);
+      if (!matched) return;
+
+      currentCard = matched;
+      lastCardId = matched.id;
+      resultImage.src = matched.image;
+      resultImage.alt = matched.alt;
+      resultCategory.textContent = `心情主題｜${matched.category}`;
+      forYou.textContent = personalisedHeading();
+      drawButton.hidden = true;
+      resultCard.classList.add("visible");
+    }
+
+    async function shareResult() {
+      if (!currentCard) return;
+      const shareUrl = window.location.href;
+      const shareText = `${personalisedHeading()} 我在 GA·E 抽到一張心情小卡。`;
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "GA·E 心情小卡",
+            text: shareText,
+            url: shareUrl
+          });
+          return;
+        } catch (error) {
+          if (error.name === "AbortError") return;
+        }
+      }
+
+      try {
+        await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
+        showToast("分享連結已複製");
+      } catch {
+        showToast("請複製瀏覽器網址分享");
+      }
+    }
+
+    function downloadCard() {
+      if (!currentCard) return;
+      const link = document.createElement("a");
+      link.href = currentCard.image;
+      link.download = `GAE-心情小卡-${String(currentCard.id).padStart(2, "0")}.jpg`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      showToast("小卡已開始儲存");
+    }
+
+    drawButton.addEventListener("click", drawCard);
+    againButton.addEventListener("click", resetDraw);
+    shareButton.addEventListener("click", shareResult);
+    downloadButton.addEventListener("click", downloadCard);
+    guestName.addEventListener("input", () => {
+      if (currentCard) forYou.textContent = personalisedHeading();
+    });
+  </script>
+</body>
+</html>
