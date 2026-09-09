@@ -1,1 +1,289 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#F7F2EC">
+  <title>MIKA｜GAE・SUNSEE・生活・考照服務</title>
+  <meta name="description" content="MIKA 的個人品牌入口：GAE 甲意｜卡意直覺占卜、SUNSEE 善行微光公益、MIKA 吃喝玩樂日常、長榮汽車考照服務伊小姐。">
+  <style>
+    :root{
+      --bg:#F7F2EC;
+      --paper:#FFFDF9;
+      --paper-soft:#F1E9E1;
+      --paper-blue:#EDF1F2;
+      --paper-sage:#EFF1EC;
+      --ink:#4A4542;
+      --muted:#817872;
+      --line:rgba(93,78,70,.13);
+      --blue:#8798A6;
+      --blue-deep:#687986;
+      --taupe:#A58F83;
+      --taupe-deep:#806D64;
+      --rose:#B89B92;
+      --sage:#A8B2A3;
+      --sand:#C9B895;
+      --white:#FFFFFF;
+      --shadow:0 18px 45px rgba(92,77,67,.08);
+      --shadow-soft:0 10px 28px rgba(92,77,67,.06);
+      --radius:28px;
+    }
 
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      color:var(--ink);
+      font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(184,155,146,.16), transparent 31rem),
+        radial-gradient(circle at 100% 12%, rgba(135,152,166,.13), transparent 29rem),
+        linear-gradient(180deg,#FBF8F4 0%,var(--bg) 45%,#F2EAE2 100%);
+      line-height:1.7;
+    }
+    body:before{
+      content:"";
+      position:fixed;inset:0;z-index:-1;pointer-events:none;
+      background-image:radial-gradient(rgba(112,96,86,.06) .7px,transparent .7px);
+      background-size:18px 18px;
+      mask-image:linear-gradient(180deg,#000,transparent 78%);
+      opacity:.45;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .shell{width:min(100% - 28px,760px);margin:0 auto;padding:32px 0 34px}
+
+    /* HERO */
+    .hero-card{
+      position:relative;overflow:hidden;
+      display:grid;grid-template-columns:170px 1fr;gap:24px;align-items:center;
+      padding:26px;
+      border:1px solid var(--line);
+      border-radius:34px;
+      background:rgba(255,253,249,.87);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+    }
+    .hero-card:before,
+    .hero-card:after{
+      content:"";position:absolute;border-radius:50%;pointer-events:none;
+    }
+    .hero-card:before{width:230px;height:230px;right:-95px;top:-110px;background:rgba(135,152,166,.12)}
+    .hero-card:after{width:180px;height:180px;left:-95px;bottom:-115px;background:rgba(184,155,146,.13)}
+
+    .profile-link{
+      position:relative;z-index:1;display:block;
+      width:170px;height:170px;border-radius:30px;overflow:hidden;
+      border:7px solid rgba(255,255,255,.82);
+      box-shadow:0 16px 36px rgba(88,72,63,.14);
+      transform:rotate(-1.2deg);
+      transition:.25s ease;
+    }
+    .profile-link:hover{transform:rotate(0deg) translateY(-2px)}
+    .profile-link img{width:100%;height:100%;object-fit:cover}
+    .photo-hint{
+      position:absolute;left:12px;bottom:10px;
+      padding:5px 9px;border-radius:999px;
+      background:rgba(74,69,66,.72);color:#fff;
+      font-size:10px;letter-spacing:.06em;
+      backdrop-filter:blur(5px)
+    }
+    .hero-copy{position:relative;z-index:1;min-width:0}
+    .eyebrow{font-size:11px;letter-spacing:.18em;color:var(--blue-deep);font-weight:900;margin-bottom:5px}
+    h1{font-family:Georgia,"Noto Serif TC","Songti TC",serif;font-weight:600;font-size:clamp(38px,8vw,56px);line-height:1.02;letter-spacing:.07em;margin:0 0 9px}
+    .tagline{font-size:16px;font-weight:800;color:var(--taupe-deep);margin:0 0 10px;letter-spacing:.03em}
+    .bio{font-size:13px;color:#756D68;margin:0 0 14px;line-height:1.75}
+    .chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px}
+    .chip{font-size:10px;font-weight:800;letter-spacing:.07em;padding:6px 9px;border-radius:999px;background:#F4EEE8;border:1px solid rgba(93,78,70,.08);color:#776C66}
+    .hero-social{
+      display:inline-flex;align-items:center;gap:8px;
+      min-height:42px;padding:0 14px;border-radius:14px;
+      background:var(--blue);color:#fff;font-size:12px;font-weight:900;
+      box-shadow:0 8px 20px rgba(104,121,134,.16);
+      transition:.2s ease;
+    }
+    .hero-social:hover{transform:translateY(-1px)}
+
+    .section-title{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.16em;color:#8B817B;font-weight:900;margin:28px 4px 12px;text-transform:uppercase}
+    .section-title:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--line),transparent)}
+
+    /* CURRENT */
+    .current-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .current-card{
+      position:relative;overflow:hidden;
+      padding:21px;border-radius:26px;border:1px solid var(--line);
+      background:rgba(255,253,249,.9);box-shadow:var(--shadow-soft)
+    }
+    .current-card:after{content:"";position:absolute;width:155px;height:155px;border-radius:50%;right:-65px;top:-75px;background:var(--glow,rgba(135,152,166,.12))}
+    .current-card.energy{--glow:rgba(135,152,166,.14)}
+    .current-card.mood{--glow:rgba(184,155,146,.15)}
+    .current-kicker{font-size:10px;letter-spacing:.15em;color:var(--accent,var(--blue-deep));font-weight:900;margin-bottom:8px}
+    .current-title{font-size:19px;line-height:1.35;margin:0 0 6px;font-weight:900}
+    .current-price{font-family:Georgia,"Times New Roman",serif;font-size:29px;line-height:1.1;margin:4px 0 10px;color:#6E5F58}
+    .current-desc{font-size:12px;line-height:1.7;color:#7A716C;margin:0 0 15px;min-height:42px}
+
+    /* CARDS */
+    .stack{display:grid;gap:14px}
+    .card{
+      position:relative;overflow:hidden;
+      border:1px solid var(--line);border-radius:var(--radius);
+      background:rgba(255,253,249,.90);box-shadow:var(--shadow-soft)
+    }
+    .card:after{content:"";position:absolute;right:-58px;top:-72px;width:170px;height:170px;border-radius:50%;background:var(--orb,rgba(135,152,166,.10));pointer-events:none}
+    .card-main{padding:22px 22px 18px;display:flex;gap:15px;align-items:flex-start;position:relative;z-index:1}
+    .mark{flex:0 0 48px;width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:var(--mark-bg,var(--blue));color:#fff;font-family:Georgia,serif;font-size:20px;box-shadow:0 8px 18px rgba(82,71,65,.10)}
+    .copy{min-width:0;flex:1}
+    .label{font-size:10px;letter-spacing:.15em;color:var(--muted);font-weight:900;margin-bottom:4px}
+    .title{font-size:20px;line-height:1.35;font-weight:900;letter-spacing:.01em;margin:0 0 5px}
+    .desc{font-size:13px;line-height:1.65;color:#77706B;margin:0}
+    .actions{display:grid;grid-template-columns:repeat(var(--cols,1),1fr);gap:8px;padding:0 14px 14px;position:relative;z-index:1}
+    .btn{min-height:48px;border-radius:16px;padding:0 15px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#FFF;border:1px solid rgba(93,78,70,.11);font-size:13px;font-weight:900;transition:.2s ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(80,69,63,.07)}
+    .btn.primary{background:var(--btn,var(--blue));color:#fff;border-color:transparent}
+    .btn .arrow{font-size:17px;opacity:.78}
+    .btn.wide{grid-column:1/-1}
+
+    .gae{--mark-bg:#A58F83;--orb:rgba(165,143,131,.13);--btn:#9D867A}
+    .sunsee{--mark-bg:#A8B2A3;--orb:rgba(168,178,163,.14);--btn:#96A08F}
+    .mika{--mark-bg:#B89B92;--orb:rgba(184,155,146,.15);--btn:#AE8D84}
+    .drive{--mark-bg:#8798A6;--orb:rgba(135,152,166,.14);--btn:#7C8F9E}
+
+    .current-card .btn{position:relative;z-index:1;background:var(--blue);color:#fff;border-color:transparent}
+    .current-card.mood .btn{background:var(--rose)}
+
+    .footer{text-align:center;padding:26px 10px 10px;color:#8B817B;font-size:11px;line-height:1.8}
+    .footer strong{color:#6E625D;font-weight:900;letter-spacing:.08em}
+
+    @media (max-width:620px){
+      .shell{width:min(100% - 20px,760px);padding-top:18px}
+      .hero-card{grid-template-columns:1fr;text-align:center;padding:23px 18px 22px;gap:16px}
+      .profile-link{width:132px;height:132px;border-radius:50%;margin:0 auto;transform:none;border-width:6px}
+      .profile-link:hover{transform:translateY(-2px)}
+      .photo-hint{display:none}
+      .chips{justify-content:center}
+      .hero-social{margin:0 auto}
+      .bio{max-width:420px;margin-left:auto;margin-right:auto}
+      .current-grid{grid-template-columns:1fr}
+      .current-desc{min-height:0}
+      .card-main{padding:19px 18px 16px}
+      .mark{width:44px;height:44px;flex-basis:44px;border-radius:14px}
+      .title{font-size:18px}
+      .actions{grid-template-columns:1fr!important}
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="hero-card">
+      <a class="profile-link" href="https://www.instagram.com/mika_tsai1123" target="_blank" rel="noopener" aria-label="前往 MIKA Instagram">
+        <img src="assets/mika-profile.jpg" alt="MIKA 個人照片">
+        <span class="photo-hint">Instagram ↗</span>
+      </a>
+      <div class="hero-copy">
+        <div class="eyebrow">HELLO, I'M MIKA</div>
+        <h1>MIKA</h1>
+        <p class="tagline">設計 × 直覺 × 生活 × 善意</p>
+        <p class="bio">我是 GAE 占卜師、SUNSEE 善行微光公益發起人，也分享吃喝玩樂與生活日常，同時提供汽車考照服務。不同身份，都是我正在認真走的生活。</p>
+        <div class="chips" aria-label="MIKA 身份">
+          <span class="chip">GAE</span>
+          <span class="chip">SUNSEE</span>
+          <span class="chip">MIKA DAILY</span>
+          <span class="chip">MISS I</span>
+        </div>
+        <a class="hero-social" href="https://www.instagram.com/mika_tsai1123" target="_blank" rel="noopener">追蹤我的生活 @mika_tsai1123 <span>↗</span></a>
+      </div>
+    </header>
+
+    <div class="section-title">This month · 本月推薦</div>
+    <section class="current-grid" aria-label="MIKA 本月推薦">
+      <article class="current-card energy">
+        <div class="current-kicker">GAE · ENERGY READING</div>
+        <h2 class="current-title">元辰宮占卜</h2>
+        <div class="current-price">NT$800</div>
+        <p class="current-desc">從內在狀態、能量與磁場，看見近期真正需要整理與調整的方向。</p>
+        <a class="btn" href="https://gae.tw/" target="_blank" rel="noopener"><span>了解／預約</span><span class="arrow">↗</span></a>
+      </article>
+
+      <article class="current-card mood">
+        <div class="current-kicker">PANGHU CAT · MOOD CARDS</div>
+        <h2 class="current-title">胖虎貓心情小卡 5 張</h2>
+        <div class="current-price">NT$100</div>
+        <p class="current-desc">五張屬於日常的小提醒，把一句剛剛好的話，留給現在的自己。</p>
+        <a class="btn" href="https://gae.tw/" target="_blank" rel="noopener"><span>前往 GAE 官網</span><span class="arrow">↗</span></a>
+      </article>
+    </section>
+
+    <div class="section-title">Explore · 認識不同的我</div>
+    <section class="stack" aria-label="MIKA 個人品牌入口">
+      <article class="card gae">
+        <div class="card-main">
+          <div class="mark">G</div>
+          <div class="copy">
+            <div class="label">INTUITIVE READING</div>
+            <h2 class="title">GAE 甲意｜卡意直覺占卜</h2>
+            <p class="desc">直覺占卜・靈魂解析・宮位解讀。把目光留給自己，看懂此刻真正需要的方向。</p>
+          </div>
+        </div>
+        <div class="actions" style="--cols:2">
+          <a class="btn primary" href="https://gae.tw/" target="_blank" rel="noopener"><span>GAE 官網</span><span class="arrow">↗</span></a>
+          <a class="btn" href="https://www.instagram.com/gae.card/" target="_blank" rel="noopener"><span>Instagram @gae.card</span><span class="arrow">↗</span></a>
+        </div>
+      </article>
+
+      <article class="card sunsee">
+        <div class="card-main">
+          <div class="mark">S</div>
+          <div class="copy">
+            <div class="label">GOODWILL PROJECT</div>
+            <h2 class="title">SUNSEE｜善行微光公益</h2>
+            <p class="desc">讓善意被看見。串起願意多做一點的店家、老師、創作者與每一位參與的人。</p>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="https://sunsee.tw/" target="_blank" rel="noopener"><span>進入 SUNSEE 官網</span><span class="arrow">↗</span></a>
+        </div>
+      </article>
+
+      <article class="card mika">
+        <div class="card-main">
+          <div class="mark">M</div>
+          <div class="copy">
+            <div class="label">FOOD · TRAVEL · DAILY LIFE</div>
+            <h2 class="title">MIKA｜占卜師吃喝玩樂日常</h2>
+            <p class="desc">離開牌桌之後的真實日常。吃、住、旅行、體驗，也記錄一個占卜師怎麼生活。</p>
+          </div>
+        </div>
+        <div class="actions" style="--cols:2">
+          <a class="btn primary wide" href="https://www.instagram.com/mika_tsai1123" target="_blank" rel="noopener"><span>Instagram @mika_tsai1123</span><span class="arrow">↗</span></a>
+          <a class="btn" href="https://www.facebook.com/share/1VTyuL1kRG/?mibextid=wwXIfr" target="_blank" rel="noopener"><span>Facebook</span><span class="arrow">↗</span></a>
+          <a class="btn" href="https://www.threads.com/@mika_tsai1123?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener"><span>Threads</span><span class="arrow">↗</span></a>
+          <a class="btn" href="https://www.tiktok.com/@mika1123k?_r=1&amp;_t=ZS-991hWmYQ3HQ" target="_blank" rel="noopener"><span>TikTok @mika1123k</span><span class="arrow">↗</span></a>
+          <a class="btn" href="https://www.youtube.com/@mika_tsai1123" target="_blank" rel="noopener"><span>YouTube @mika_tsai1123</span><span class="arrow">↗</span></a>
+        </div>
+      </article>
+
+      <article class="card drive">
+        <div class="card-main">
+          <div class="mark">I</div>
+          <div class="copy">
+            <div class="label">DRIVING LICENSE SERVICE</div>
+            <h2 class="title">考駕照的伊小姐｜長榮汽車考照服務</h2>
+            <p class="desc">職業小客、大貨車、大客車、道路駕駛陪練與考照諮詢，先確認資格再安排適合流程。</p>
+          </div>
+        </div>
+        <div class="actions" style="--cols:2">
+          <a class="btn primary" href="https://www.0913741123.com.tw/" target="_blank" rel="noopener"><span>考照服務官網</span><span class="arrow">↗</span></a>
+          <a class="btn" href="https://line.me/R/ti/p/@car828" target="_blank" rel="noopener"><span>LINE @car828</span><span class="arrow">↗</span></a>
+        </div>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <strong>MIKA</strong><br>
+      每一個身份，都不是副業；是我生活裡不同的入口。
+    </footer>
+  </main>
+</body>
+</html>
