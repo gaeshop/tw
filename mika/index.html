@@ -88,7 +88,6 @@
     .section-title:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--line),transparent)}
 
 
-
     /* DIGITAL CARD */
     .digital-card{
       position:relative;overflow:hidden;padding:24px;border:1px solid rgba(255,255,255,.22);border-radius:30px;
@@ -179,7 +178,6 @@
     .daily-embed .mini-btn{padding:9px 12px}
 
 
-
     /* FOLD / ACCORDION */
     .fold-card{margin:0;padding:0;border:0}
     .fold-summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;border:1px solid var(--line);border-radius:24px;background:rgba(255,253,249,.85);box-shadow:var(--shadow-soft);cursor:pointer;transition:.22s ease}
@@ -212,7 +210,6 @@
     .intent-icon{width:36px;height:36px;flex:0 0 36px;border-radius:12px;display:grid;place-items:center;background:var(--intent-bg,#F2EAE4);font-size:17px}
     .intent-copy strong{display:block;font-size:13px;line-height:1.35;margin-bottom:2px}
     .intent-copy small{display:block;font-size:10px;color:#8A817A;line-height:1.45}
-
 
 
     /* DAILY NOTE */
@@ -314,7 +311,6 @@
     .current-card .btn{position:relative;z-index:1;background:var(--blue);color:#fff;border-color:transparent}
     .current-card.mood .btn{background:var(--rose)}
 
-
     /* GAE BOOTH */
     .gae-event-card{padding:24px;border:1px solid var(--line);border-radius:30px;background:linear-gradient(135deg,rgba(255,253,249,.96),rgba(241,233,225,.88));box-shadow:var(--shadow-soft);overflow:hidden;position:relative}
     .gae-event-card:before,.gae-event-card:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
@@ -414,7 +410,6 @@
         </div>
       </div>
     </header>
-
 
     <div class="section-title">Digital card · 我的社群名片</div>
     <section class="digital-card" aria-label="MIKA 社群名片">
@@ -527,7 +522,7 @@
         <a class="btn" data-track="shop_moodcards" data-utm="panghu_moodcards_100" href="https://gae.tw/" target="_blank" rel="noopener"><span>前往 GAE 官網</span><span class="arrow">↗</span></a>
       </article>
     </section>
-    <p class="shop-note">商品之後可直接替換成綠界商品頁連結，不需要重做整個版面。</p>
+    <p class="shop-note">精選商品與服務會持續更新，歡迎依照需求選擇適合你的內容。</p>
 <div class="section-title">More · 其他入口</div>
     <section class="mini-identity-grid" aria-label="MIKA 其他服務入口">
       
@@ -548,7 +543,7 @@
     <div class="section-title" id="collab">Work with MIKA · 一起合作</div>
     <details class="fold-card">
       <summary class="fold-summary">
-        <div class="fold-copy"><div class="fold-kicker">COLLABORATION</div><h2>品牌、探店、公益或異業合作</h2><p>有合作想法再點開填寫，不讓首頁變得太長。</p></div>
+        <div class="fold-copy"><div class="fold-kicker">COLLABORATION</div><h2>品牌、探店、公益或異業合作</h2><p>如果你想和我合作，歡迎展開填寫合作需求，我會再與你聯繫。</p></div>
         <div class="fold-cta"><span class="closed">展開合作</span><span class="opened">收起內容</span><span class="fold-arrow">⌄</span></div>
       </summary>
       <div class="fold-panel">
@@ -609,7 +604,6 @@
         } catch(e) {}
       });
     });
-
 
 
     // Daily message: stable message for the calendar day, optional manual redraw.
@@ -679,7 +673,6 @@ ${location.href}`); document.getElementById('shareMessage').textContent='已複�
       {name:'奕口涵麵',area:'店家資訊待補',cats:['吃飯'],note:'MIKA 原貼文已收錄。',post:'https://www.instagram.com/reel/Dc5bduKi4D_/',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('奕口涵麵')},
       {name:'電競客棧宜舍館',area:'台中・中區',cats:['住宿','親子','台中'],note:'MIKA 原貼文已收錄｜台中中區電競旅宿體驗。',post:'https://www.instagram.com/reel/DdBpQhxieL8/',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('電競客棧宜舍館 台中 中區')},
 
-      {name:'第一焿香',area:'近期拍攝',cats:['吃飯'],note:'近期拍攝｜台式小吃。原貼文網址待補。',post:'',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('第一焿香 台灣')},
     ];
     const discoverResult = document.getElementById('discoverResult');
     const filters = [...document.querySelectorAll('.discover-filter')];
