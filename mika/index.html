@@ -30,11 +30,9 @@
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html{scroll-behavior:smooth;scroll-padding-top:18px}
     body{
-      margin:0;
-      min-height:100vh;
-      color:var(--ink);
+      margin:0;min-height:100vh;color:var(--ink);
       font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
       background:
         radial-gradient(circle at 8% 0%, rgba(184,155,146,.16), transparent 31rem),
@@ -43,53 +41,33 @@
       line-height:1.7;
     }
     body:before{
-      content:"";
-      position:fixed;inset:0;z-index:-1;pointer-events:none;
+      content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
       background-image:radial-gradient(rgba(112,96,86,.06) .7px,transparent .7px);
-      background-size:18px 18px;
-      mask-image:linear-gradient(180deg,#000,transparent 78%);
-      opacity:.45;
+      background-size:18px 18px;mask-image:linear-gradient(180deg,#000,transparent 78%);opacity:.45;
     }
-
     a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    button{color:inherit}
     img{display:block;max-width:100%}
     .shell{width:min(100% - 28px,760px);margin:0 auto;padding:32px 0 34px}
 
     /* HERO */
     .hero-card{
-      position:relative;overflow:hidden;
-      display:grid;grid-template-columns:170px 1fr;gap:24px;align-items:center;
-      padding:26px;
-      border:1px solid var(--line);
-      border-radius:34px;
-      background:rgba(255,253,249,.87);
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(10px);
+      position:relative;overflow:hidden;display:grid;grid-template-columns:170px 1fr;gap:24px;align-items:center;
+      padding:26px;border:1px solid var(--line);border-radius:34px;background:rgba(255,253,249,.87);
+      box-shadow:var(--shadow);backdrop-filter:blur(10px);
     }
-    .hero-card:before,
-    .hero-card:after{
-      content:"";position:absolute;border-radius:50%;pointer-events:none;
-    }
+    .hero-card:before,.hero-card:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
     .hero-card:before{width:230px;height:230px;right:-95px;top:-110px;background:rgba(135,152,166,.12)}
     .hero-card:after{width:180px;height:180px;left:-95px;bottom:-115px;background:rgba(184,155,146,.13)}
-
     .profile-link{
-      position:relative;z-index:1;display:block;
-      width:170px;height:170px;border-radius:30px;overflow:hidden;
-      border:7px solid rgba(255,255,255,.82);
-      box-shadow:0 16px 36px rgba(88,72,63,.14);
-      transform:rotate(-1.2deg);
-      transition:.25s ease;
+      position:relative;z-index:1;display:block;width:170px;height:170px;border-radius:30px;overflow:hidden;
+      border:7px solid rgba(255,255,255,.82);box-shadow:0 16px 36px rgba(88,72,63,.14);
+      transform:rotate(-1.2deg);transition:.25s ease;
     }
     .profile-link:hover{transform:rotate(0deg) translateY(-2px)}
     .profile-link img{width:100%;height:100%;object-fit:cover}
-    .photo-hint{
-      position:absolute;left:12px;bottom:10px;
-      padding:5px 9px;border-radius:999px;
-      background:rgba(74,69,66,.72);color:#fff;
-      font-size:10px;letter-spacing:.06em;
-      backdrop-filter:blur(5px)
-    }
+    .photo-hint{position:absolute;left:12px;bottom:10px;padding:5px 9px;border-radius:999px;background:rgba(74,69,66,.72);color:#fff;font-size:10px;letter-spacing:.06em;backdrop-filter:blur(5px)}
     .hero-copy{position:relative;z-index:1;min-width:0}
     .eyebrow{font-size:11px;letter-spacing:.18em;color:var(--blue-deep);font-weight:900;margin-bottom:5px}
     h1{font-family:Georgia,"Noto Serif TC","Songti TC",serif;font-weight:600;font-size:clamp(38px,8vw,56px);line-height:1.02;letter-spacing:.07em;margin:0 0 9px}
@@ -97,87 +75,128 @@
     .bio{font-size:13px;color:#756D68;margin:0 0 14px;line-height:1.75}
     .chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px}
     .chip{font-size:10px;font-weight:800;letter-spacing:.07em;padding:6px 9px;border-radius:999px;background:#F4EEE8;border:1px solid rgba(93,78,70,.08);color:#776C66}
-    .hero-social{
-      display:inline-flex;align-items:center;gap:8px;
-      min-height:42px;padding:0 14px;border-radius:14px;
-      background:var(--blue);color:#fff;font-size:12px;font-weight:900;
-      box-shadow:0 8px 20px rgba(104,121,134,.16);
-      transition:.2s ease;
+    .hero-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    .hero-social,.share-btn{
+      min-height:42px;padding:0 14px;border-radius:14px;border:0;display:inline-flex;align-items:center;gap:8px;
+      font-size:12px;font-weight:900;cursor:pointer;transition:.2s ease;
     }
-    .hero-social:hover{transform:translateY(-1px)}
+    .hero-social{background:var(--blue);color:#fff;box-shadow:0 8px 20px rgba(104,121,134,.16)}
+    .share-btn{background:#F3ECE6;border:1px solid var(--line);color:#726963}
+    .hero-social:hover,.share-btn:hover{transform:translateY(-1px)}
 
     .section-title{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.16em;color:#8B817B;font-weight:900;margin:28px 4px 12px;text-transform:uppercase}
     .section-title:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--line),transparent)}
 
-    /* CURRENT */
-    .current-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-    .current-card{
-      position:relative;overflow:hidden;
-      padding:21px;border-radius:26px;border:1px solid var(--line);
-      background:rgba(255,253,249,.9);box-shadow:var(--shadow-soft)
+    /* QUICK INTENT */
+    .intent-wrap{padding:18px;border:1px solid var(--line);border-radius:28px;background:rgba(255,253,249,.76);box-shadow:var(--shadow-soft)}
+    .intent-head{margin-bottom:13px}
+    .intent-head strong{display:block;font-family:Georgia,"Noto Serif TC",serif;font-size:20px;font-weight:600;letter-spacing:.03em}
+    .intent-head span{font-size:12px;color:var(--muted)}
+    .intent-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+    .intent{
+      min-height:72px;padding:13px 14px;border-radius:19px;border:1px solid var(--line);background:#fff;
+      display:flex;align-items:center;gap:11px;transition:.2s ease;
     }
+    .intent:hover{transform:translateY(-1px);box-shadow:0 9px 22px rgba(80,69,63,.07)}
+    .intent-icon{width:36px;height:36px;flex:0 0 36px;border-radius:12px;display:grid;place-items:center;background:var(--intent-bg,#F2EAE4);font-size:17px}
+    .intent-copy strong{display:block;font-size:13px;line-height:1.35;margin-bottom:2px}
+    .intent-copy small{display:block;font-size:10px;color:#8A817A;line-height:1.45}
+
+    /* SHOP / CURRENT */
+    .current-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .current-card{position:relative;overflow:hidden;padding:21px;border-radius:26px;border:1px solid var(--line);background:rgba(255,253,249,.9);box-shadow:var(--shadow-soft)}
     .current-card:after{content:"";position:absolute;width:155px;height:155px;border-radius:50%;right:-65px;top:-75px;background:var(--glow,rgba(135,152,166,.12))}
     .current-card.energy{--glow:rgba(135,152,166,.14)}
     .current-card.mood{--glow:rgba(184,155,146,.15)}
     .current-kicker{font-size:10px;letter-spacing:.15em;color:var(--accent,var(--blue-deep));font-weight:900;margin-bottom:8px}
+    .product-badge{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:#F4EEE8;color:#776C66;font-size:9px;font-weight:900;letter-spacing:.09em;margin-bottom:8px}
     .current-title{font-size:19px;line-height:1.35;margin:0 0 6px;font-weight:900}
     .current-price{font-family:Georgia,"Times New Roman",serif;font-size:29px;line-height:1.1;margin:4px 0 10px;color:#6E5F58}
     .current-desc{font-size:12px;line-height:1.7;color:#7A716C;margin:0 0 15px;min-height:42px}
+    .shop-note{font-size:11px;color:#8A817A;margin:10px 4px 0;text-align:center}
+
+    /* MOOD CTA */
+    .mood-cta{
+      position:relative;overflow:hidden;padding:22px;border-radius:28px;border:1px solid var(--line);
+      background:linear-gradient(135deg,rgba(255,253,249,.96),rgba(239,241,236,.92));box-shadow:var(--shadow-soft);
+      display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;
+    }
+    .mood-cta:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;right:-95px;bottom:-120px;background:rgba(168,178,163,.18)}
+    .mood-copy{position:relative;z-index:1}
+    .mood-copy .kicker{font-size:10px;letter-spacing:.15em;color:#7B8977;font-weight:900;margin-bottom:5px}
+    .mood-copy h2{font-family:Georgia,"Noto Serif TC",serif;font-size:22px;font-weight:600;line-height:1.35;margin:0 0 5px}
+    .mood-copy p{font-size:12px;color:#756F69;margin:0;line-height:1.7}
+    .mood-circle{position:relative;z-index:1;width:92px;height:92px;border-radius:50%;display:grid;place-items:center;text-align:center;background:#A8B2A3;color:#fff;box-shadow:0 13px 28px rgba(116,130,111,.18);font-size:12px;font-weight:900;line-height:1.4;transition:.2s ease}
+    .mood-circle:hover{transform:rotate(2deg) scale(1.02)}
 
     /* CARDS */
     .stack{display:grid;gap:14px}
-    .card{
-      position:relative;overflow:hidden;
-      border:1px solid var(--line);border-radius:var(--radius);
-      background:rgba(255,253,249,.90);box-shadow:var(--shadow-soft)
-    }
+    .card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,253,249,.90);box-shadow:var(--shadow-soft)}
     .card:after{content:"";position:absolute;right:-58px;top:-72px;width:170px;height:170px;border-radius:50%;background:var(--orb,rgba(135,152,166,.10));pointer-events:none}
     .card-main{padding:22px 22px 18px;display:flex;gap:15px;align-items:flex-start;position:relative;z-index:1}
     .mark{flex:0 0 48px;width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:var(--mark-bg,var(--blue));color:#fff;font-family:Georgia,serif;font-size:20px;box-shadow:0 8px 18px rgba(82,71,65,.10)}
-    .copy{min-width:0;flex:1}
-    .label{font-size:10px;letter-spacing:.15em;color:var(--muted);font-weight:900;margin-bottom:4px}
+    .copy{min-width:0;flex:1}.label{font-size:10px;letter-spacing:.15em;color:var(--muted);font-weight:900;margin-bottom:4px}
     .title{font-size:20px;line-height:1.35;font-weight:900;letter-spacing:.01em;margin:0 0 5px}
     .desc{font-size:13px;line-height:1.65;color:#77706B;margin:0}
     .actions{display:grid;grid-template-columns:repeat(var(--cols,1),1fr);gap:8px;padding:0 14px 14px;position:relative;z-index:1}
-    .btn{min-height:48px;border-radius:16px;padding:0 15px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#FFF;border:1px solid rgba(93,78,70,.11);font-size:13px;font-weight:900;transition:.2s ease}
+    .btn{min-height:48px;border-radius:16px;padding:0 15px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#FFF;border:1px solid rgba(93,78,70,.11);font-size:13px;font-weight:900;transition:.2s ease;cursor:pointer}
     .btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(80,69,63,.07)}
     .btn.primary{background:var(--btn,var(--blue));color:#fff;border-color:transparent}
-    .btn .arrow{font-size:17px;opacity:.78}
-    .btn.wide{grid-column:1/-1}
-
+    .btn .arrow{font-size:17px;opacity:.78}.btn.wide{grid-column:1/-1}
     .gae{--mark-bg:#A58F83;--orb:rgba(165,143,131,.13);--btn:#9D867A}
     .sunsee{--mark-bg:#A8B2A3;--orb:rgba(168,178,163,.14);--btn:#96A08F}
     .mika{--mark-bg:#B89B92;--orb:rgba(184,155,146,.15);--btn:#AE8D84}
     .drive{--mark-bg:#8798A6;--orb:rgba(135,152,166,.14);--btn:#7C8F9E}
-
     .current-card .btn{position:relative;z-index:1;background:var(--blue);color:#fff;border-color:transparent}
     .current-card.mood .btn{background:var(--rose)}
 
-    .footer{text-align:center;padding:26px 10px 10px;color:#8B817B;font-size:11px;line-height:1.8}
-    .footer strong{color:#6E625D;font-weight:900;letter-spacing:.08em}
+    /* COLLAB */
+    .collab-card{border:1px solid var(--line);border-radius:30px;background:rgba(255,253,249,.9);box-shadow:var(--shadow);overflow:hidden}
+    .collab-head{padding:23px 23px 16px;background:linear-gradient(135deg,rgba(241,233,225,.68),rgba(237,241,242,.55))}
+    .collab-head .label{color:var(--blue-deep)}
+    .collab-head h2{font-family:Georgia,"Noto Serif TC",serif;font-size:25px;font-weight:600;margin:3px 0 6px}
+    .collab-head p{font-size:12px;color:#756F69;margin:0}
+    .collab-form{padding:18px 20px 20px;display:grid;gap:11px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .field{display:grid;gap:5px}
+    .field label{font-size:10px;font-weight:900;letter-spacing:.08em;color:#7D746E}
+    .field input,.field select,.field textarea{width:100%;border:1px solid rgba(93,78,70,.14);border-radius:14px;background:#FFFEFC;padding:11px 12px;color:var(--ink);outline:none;transition:.2s ease}
+    .field textarea{resize:vertical;min-height:92px}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:rgba(104,121,134,.55);box-shadow:0 0 0 3px rgba(135,152,166,.10)}
+    .collab-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px}
+    .form-btn{min-height:48px;border-radius:15px;border:1px solid var(--line);font-weight:900;font-size:13px;cursor:pointer;transition:.2s ease}
+    .form-btn.primary{background:var(--blue);color:#fff;border-color:transparent}
+    .form-btn.secondary{background:#F4EEE8}
+    .form-btn:hover{transform:translateY(-1px)}
+    .result-box{display:none;margin-top:2px;padding:14px;border-radius:16px;background:#F5F0EA;border:1px dashed rgba(93,78,70,.18)}
+    .result-box.show{display:block}
+    .result-box .status{font-size:11px;font-weight:900;color:#6B7667;margin-bottom:7px}
+    .result-box pre{white-space:pre-wrap;word-break:break-word;margin:0;font:12px/1.65 -apple-system,BlinkMacSystemFont,"Noto Sans TC",sans-serif;color:#675F5A}
+    .contact-go{display:none;margin-top:8px}.contact-go.show{display:flex}
+    .form-note{font-size:10px;color:#948B85;margin:0;line-height:1.6}
+
+    /* FLOAT TO TOP */
+    .to-top{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));width:42px;height:42px;border-radius:50%;border:1px solid rgba(93,78,70,.12);background:rgba(255,253,249,.9);box-shadow:0 8px 24px rgba(80,69,63,.10);display:grid;place-items:center;opacity:0;pointer-events:none;transform:translateY(8px);transition:.2s ease;z-index:20;cursor:pointer}
+    .to-top.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+    .footer{text-align:center;padding:28px 10px 12px;color:#8B817B;font-size:11px;line-height:1.8}.footer strong{color:#6E625D;font-weight:900;letter-spacing:.08em}
 
     @media (max-width:620px){
       .shell{width:min(100% - 20px,760px);padding-top:18px}
       .hero-card{grid-template-columns:1fr;text-align:center;padding:23px 18px 22px;gap:16px}
       .profile-link{width:132px;height:132px;border-radius:50%;margin:0 auto;transform:none;border-width:6px}
-      .profile-link:hover{transform:translateY(-2px)}
-      .photo-hint{display:none}
-      .chips{justify-content:center}
-      .hero-social{margin:0 auto}
-      .bio{max-width:420px;margin-left:auto;margin-right:auto}
-      .current-grid{grid-template-columns:1fr}
-      .current-desc{min-height:0}
-      .card-main{padding:19px 18px 16px}
-      .mark{width:44px;height:44px;flex-basis:44px;border-radius:14px}
-      .title{font-size:18px}
-      .actions{grid-template-columns:1fr!important}
+      .profile-link:hover{transform:translateY(-2px)}.photo-hint{display:none}.chips,.hero-row{justify-content:center}.bio{max-width:420px;margin-left:auto;margin-right:auto}
+      .intent-grid,.current-grid,.form-row,.collab-actions{grid-template-columns:1fr}
+      .intent{min-height:64px}.current-desc{min-height:0}
+      .mood-cta{grid-template-columns:1fr;text-align:center}.mood-circle{margin:0 auto}
+      .card-main{padding:19px 18px 16px}.mark{width:44px;height:44px;flex-basis:44px;border-radius:14px}.title{font-size:18px}.actions{grid-template-columns:1fr!important}
     }
+    @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
   </style>
 </head>
 <body>
-  <main class="shell">
+  <main class="shell" id="top">
     <header class="hero-card">
-      <a class="profile-link" href="https://www.instagram.com/mika_tsai1123" target="_blank" rel="noopener" aria-label="前往 MIKA Instagram">
+      <a class="profile-link" data-track="hero_profile_instagram" href="https://www.instagram.com/mika_tsai1123" target="_blank" rel="noopener" aria-label="前往 MIKA Instagram">
         <img src="assets/mika-profile.jpg" alt="MIKA 個人照片">
         <span class="photo-hint">Instagram ↗</span>
       </a>
@@ -186,104 +205,196 @@
         <h1>MIKA</h1>
         <p class="tagline">設計 × 直覺 × 生活 × 善意</p>
         <p class="bio">我是 GAE 占卜師、SUNSEE 善行微光公益發起人，也分享吃喝玩樂與生活日常，同時提供汽車考照服務。不同身份，都是我正在認真走的生活。</p>
-        <div class="chips" aria-label="MIKA 身份">
-          <span class="chip">GAE</span>
-          <span class="chip">SUNSEE</span>
-          <span class="chip">MIKA DAILY</span>
-          <span class="chip">MISS I</span>
+        <div class="chips" aria-label="MIKA 身份"><span class="chip">GAE</span><span class="chip">SUNSEE</span><span class="chip">MIKA DAILY</span><span class="chip">MISS I</span></div>
+        <div class="hero-row">
+          <a class="hero-social" data-track="hero_instagram" href="https://www.instagram.com/mika_tsai1123" target="_blank" rel="noopener">追蹤我的生活 @mika_tsai1123 <span>↗</span></a>
+          <button class="share-btn" id="sharePage" type="button">分享這個頁面 ↗</button>
         </div>
-        <a class="hero-social" href="https://www.instagram.com/mika_tsai1123" target="_blank" rel="noopener">追蹤我的生活 @mika_tsai1123 <span>↗</span></a>
       </div>
     </header>
 
-    <div class="section-title">This month · 本月推薦</div>
+    <div class="section-title">Start here · 今天想找我做什麼？</div>
+    <section class="intent-wrap" aria-label="快速找到 MIKA 的服務">
+      <div class="intent-head"><strong>不用先認識我的每個身份。</strong><span>直接從你現在想做的事開始。</span></div>
+      <div class="intent-grid">
+        <a class="intent" data-track="quick_reading" href="#gae"><span class="intent-icon" style="--intent-bg:#F1E8E2">◌</span><span class="intent-copy"><strong>我想占卜</strong><small>GAE・直覺占卜・宮位解析</small></span></a>
+        <a class="intent" data-track="quick_collab" href="#collab"><span class="intent-icon" style="--intent-bg:#F3EAE7">✦</span><span class="intent-copy"><strong>找 MIKA 探店／合作</strong><small>品牌・旅宿・美食・生活體驗</small></span></a>
+        <a class="intent" data-track="quick_sunsee" href="#sunsee"><span class="intent-icon" style="--intent-bg:#EDF0EA">☀</span><span class="intent-copy"><strong>我想加入善行微光</strong><small>SUNSEE・店家・老師・公益合作</small></span></a>
+        <a class="intent" data-track="quick_driving" href="#drive"><span class="intent-icon" style="--intent-bg:#EAF0F2">↗</span><span class="intent-copy"><strong>我要詢問考駕照</strong><small>伊小姐・資格・班別・道路駕駛</small></span></a>
+      </div>
+    </section>
+
+    <div class="section-title" id="shop">MIKA shop · 本月推薦</div>
     <section class="current-grid" aria-label="MIKA 本月推薦">
       <article class="current-card energy">
+        <div class="product-badge">SERVICE</div>
         <div class="current-kicker">GAE · ENERGY READING</div>
         <h2 class="current-title">元辰宮占卜</h2>
         <div class="current-price">NT$800</div>
         <p class="current-desc">從內在狀態、能量與磁場，看見近期真正需要整理與調整的方向。</p>
-        <a class="btn" href="https://gae.tw/" target="_blank" rel="noopener"><span>了解／預約</span><span class="arrow">↗</span></a>
+        <a class="btn" data-track="shop_yuanchengong" data-utm="yuanchengong_800" href="https://gae.tw/" target="_blank" rel="noopener"><span>了解／預約</span><span class="arrow">↗</span></a>
       </article>
-
       <article class="current-card mood">
+        <div class="product-badge">PRODUCT</div>
         <div class="current-kicker">PANGHU CAT · MOOD CARDS</div>
         <h2 class="current-title">胖虎貓心情小卡 5 張</h2>
         <div class="current-price">NT$100</div>
         <p class="current-desc">五張屬於日常的小提醒，把一句剛剛好的話，留給現在的自己。</p>
-        <a class="btn" href="https://gae.tw/" target="_blank" rel="noopener"><span>前往 GAE 官網</span><span class="arrow">↗</span></a>
+        <a class="btn" data-track="shop_moodcards" data-utm="panghu_moodcards_100" href="https://gae.tw/" target="_blank" rel="noopener"><span>前往 GAE 官網</span><span class="arrow">↗</span></a>
       </article>
+    </section>
+    <p class="shop-note">商品之後可直接替換成綠界商品頁連結，不需要重做整個版面。</p>
+
+    <div class="section-title">A little pause · 今天也留一點目光給自己</div>
+    <section class="mood-cta" aria-label="胖虎貓心情小卡">
+      <div class="mood-copy"><div class="kicker">GAE · DAILY MOOD CARD</div><h2>今天，抽一張給自己的話。</h2><p>不用先想問題。憑直覺抽一張胖虎貓心情小卡，看看此刻有什麼話想提醒你。</p></div>
+      <a class="mood-circle" data-track="moodcard_draw" data-utm="moodcard_draw" href="https://gae.tw/moodcard" target="_blank" rel="noopener">抽一張<br>心情小卡 ↗</a>
     </section>
 
     <div class="section-title">Explore · 認識不同的我</div>
     <section class="stack" aria-label="MIKA 個人品牌入口">
-      <article class="card gae">
-        <div class="card-main">
-          <div class="mark">G</div>
-          <div class="copy">
-            <div class="label">INTUITIVE READING</div>
-            <h2 class="title">GAE 甲意｜卡意直覺占卜</h2>
-            <p class="desc">直覺占卜・靈魂解析・宮位解讀。把目光留給自己，看懂此刻真正需要的方向。</p>
-          </div>
-        </div>
+      <article class="card gae" id="gae">
+        <div class="card-main"><div class="mark">G</div><div class="copy"><div class="label">INTUITIVE READING</div><h2 class="title">GAE 甲意｜卡意直覺占卜</h2><p class="desc">直覺占卜・靈魂解析・宮位解讀。把目光留給自己，看懂此刻真正需要的方向。</p></div></div>
+        <div class="actions" style="--cols:2"><a class="btn primary" data-track="gae_website" data-utm="gae_card" href="https://gae.tw/" target="_blank" rel="noopener"><span>GAE 官網</span><span class="arrow">↗</span></a><a class="btn" data-track="gae_instagram" href="https://www.instagram.com/gae.card/" target="_blank" rel="noopener"><span>Instagram @gae.card</span><span class="arrow">↗</span></a></div>
+      </article>
+
+      <article class="card sunsee" id="sunsee">
+        <div class="card-main"><div class="mark">S</div><div class="copy"><div class="label">GOODWILL PROJECT</div><h2 class="title">SUNSEE｜善行微光公益</h2><p class="desc">讓善意被看見。串起願意多做一點的店家、老師、創作者與每一位參與的人。</p></div></div>
+        <div class="actions"><a class="btn primary" data-track="sunsee_website" data-utm="sunsee_card" href="https://sunsee.tw/" target="_blank" rel="noopener"><span>進入 SUNSEE 官網</span><span class="arrow">↗</span></a></div>
+      </article>
+
+      <article class="card mika" id="mika">
+        <div class="card-main"><div class="mark">M</div><div class="copy"><div class="label">FOOD · TRAVEL · DAILY LIFE</div><h2 class="title">MIKA｜占卜師吃喝玩樂日常</h2><p class="desc">離開牌桌之後的真實日常。吃、住、旅行、體驗，也記錄一個占卜師怎麼生活。</p></div></div>
         <div class="actions" style="--cols:2">
-          <a class="btn primary" href="https://gae.tw/" target="_blank" rel="noopener"><span>GAE 官網</span><span class="arrow">↗</span></a>
-          <a class="btn" href="https://www.instagram.com/gae.card/" target="_blank" rel="noopener"><span>Instagram @gae.card</span><span class="arrow">↗</span></a>
+          <a class="btn primary wide" data-track="mika_instagram" href="https://www.instagram.com/mika_tsai1123" target="_blank" rel="noopener"><span>Instagram @mika_tsai1123</span><span class="arrow">↗</span></a>
+          <a class="btn" data-track="mika_facebook" href="https://www.facebook.com/share/1VTyuL1kRG/?mibextid=wwXIfr" target="_blank" rel="noopener"><span>Facebook</span><span class="arrow">↗</span></a>
+          <a class="btn" data-track="mika_threads" href="https://www.threads.com/@mika_tsai1123?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener"><span>Threads</span><span class="arrow">↗</span></a>
+          <a class="btn" data-track="mika_tiktok" href="https://www.tiktok.com/@mika1123k?_r=1&amp;_t=ZS-991hWmYQ3HQ" target="_blank" rel="noopener"><span>TikTok @mika1123k</span><span class="arrow">↗</span></a>
+          <a class="btn" data-track="mika_youtube" href="https://www.youtube.com/@mika_tsai1123" target="_blank" rel="noopener"><span>YouTube @mika_tsai1123</span><span class="arrow">↗</span></a>
         </div>
       </article>
 
-      <article class="card sunsee">
-        <div class="card-main">
-          <div class="mark">S</div>
-          <div class="copy">
-            <div class="label">GOODWILL PROJECT</div>
-            <h2 class="title">SUNSEE｜善行微光公益</h2>
-            <p class="desc">讓善意被看見。串起願意多做一點的店家、老師、創作者與每一位參與的人。</p>
-          </div>
-        </div>
-        <div class="actions">
-          <a class="btn primary" href="https://sunsee.tw/" target="_blank" rel="noopener"><span>進入 SUNSEE 官網</span><span class="arrow">↗</span></a>
-        </div>
-      </article>
-
-      <article class="card mika">
-        <div class="card-main">
-          <div class="mark">M</div>
-          <div class="copy">
-            <div class="label">FOOD · TRAVEL · DAILY LIFE</div>
-            <h2 class="title">MIKA｜占卜師吃喝玩樂日常</h2>
-            <p class="desc">離開牌桌之後的真實日常。吃、住、旅行、體驗，也記錄一個占卜師怎麼生活。</p>
-          </div>
-        </div>
-        <div class="actions" style="--cols:2">
-          <a class="btn primary wide" href="https://www.instagram.com/mika_tsai1123" target="_blank" rel="noopener"><span>Instagram @mika_tsai1123</span><span class="arrow">↗</span></a>
-          <a class="btn" href="https://www.facebook.com/share/1VTyuL1kRG/?mibextid=wwXIfr" target="_blank" rel="noopener"><span>Facebook</span><span class="arrow">↗</span></a>
-          <a class="btn" href="https://www.threads.com/@mika_tsai1123?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener"><span>Threads</span><span class="arrow">↗</span></a>
-          <a class="btn" href="https://www.tiktok.com/@mika1123k?_r=1&amp;_t=ZS-991hWmYQ3HQ" target="_blank" rel="noopener"><span>TikTok @mika1123k</span><span class="arrow">↗</span></a>
-          <a class="btn" href="https://www.youtube.com/@mika_tsai1123" target="_blank" rel="noopener"><span>YouTube @mika_tsai1123</span><span class="arrow">↗</span></a>
-        </div>
-      </article>
-
-      <article class="card drive">
-        <div class="card-main">
-          <div class="mark">I</div>
-          <div class="copy">
-            <div class="label">DRIVING LICENSE SERVICE</div>
-            <h2 class="title">考駕照的伊小姐｜長榮汽車考照服務</h2>
-            <p class="desc">職業小客、大貨車、大客車、道路駕駛陪練與考照諮詢，先確認資格再安排適合流程。</p>
-          </div>
-        </div>
-        <div class="actions" style="--cols:2">
-          <a class="btn primary" href="https://www.0913741123.com.tw/" target="_blank" rel="noopener"><span>考照服務官網</span><span class="arrow">↗</span></a>
-          <a class="btn" href="https://line.me/R/ti/p/@car828" target="_blank" rel="noopener"><span>LINE @car828</span><span class="arrow">↗</span></a>
-        </div>
+      <article class="card drive" id="drive">
+        <div class="card-main"><div class="mark">I</div><div class="copy"><div class="label">DRIVING LICENSE SERVICE</div><h2 class="title">考駕照的伊小姐｜長榮汽車考照服務</h2><p class="desc">職業小客、大貨車、大客車、道路駕駛陪練與考照諮詢，先確認資格再安排適合流程。</p></div></div>
+        <div class="actions" style="--cols:2"><a class="btn primary" data-track="driving_website" data-utm="driving_card" href="https://www.0913741123.com.tw/" target="_blank" rel="noopener"><span>考照服務官網</span><span class="arrow">↗</span></a><a class="btn" data-track="driving_line" href="https://line.me/R/ti/p/@car828" target="_blank" rel="noopener"><span>LINE @car828</span><span class="arrow">↗</span></a></div>
       </article>
     </section>
 
-    <footer class="footer">
-      <strong>MIKA</strong><br>
-      每一個身份，都不是副業；是我生活裡不同的入口。
-    </footer>
+    <div class="section-title" id="collab">Work with MIKA · 一起合作</div>
+    <section class="collab-card" aria-label="MIKA 合作邀約">
+      <div class="collab-head"><div class="label">COLLABORATION</div><h2>有一些事情，我們可以一起完成。</h2><p>選擇合作類型、留下簡單內容，網站會幫你整理成一段可以直接傳給我的訊息。</p></div>
+      <form class="collab-form" id="collabForm">
+        <div class="form-row">
+          <div class="field"><label for="collabType">合作類型 *</label><select id="collabType" required><option value="">請選擇</option><option value="mika">品牌／探店／旅宿／生活合作</option><option value="gae">GAE 占卜／活動合作</option><option value="sunsee">SUNSEE 公益合作</option><option value="drive">駕訓班／考照異業合作</option></select></div>
+          <div class="field"><label for="collabName">姓名／品牌 *</label><input id="collabName" required placeholder="例如：品牌名稱或你的稱呼"></div>
+        </div>
+        <div class="field"><label for="collabContact">方便聯絡的方式</label><input id="collabContact" placeholder="IG、LINE、Email 或電話"></div>
+        <div class="field"><label for="collabMessage">合作內容 *</label><textarea id="collabMessage" required placeholder="簡單告訴我合作想法、時間、地點或希望一起完成的事情"></textarea></div>
+        <div class="collab-actions"><button class="form-btn primary" type="submit">產生合作訊息</button><button class="form-btn secondary" id="clearForm" type="button">清除內容</button></div>
+        <div class="result-box" id="resultBox"><div class="status" id="resultStatus">合作訊息已整理完成</div><pre id="resultText"></pre><a class="btn primary contact-go" id="contactGo" href="#" target="_blank" rel="noopener"><span id="contactGoText">前往聯絡</span><span class="arrow">↗</span></a></div>
+        <p class="form-note">這個表單不會把資料儲存在網站。產生後會在你的裝置上整理文字，再由你自行前往對應聯絡入口送出。</p>
+      </form>
+    </section>
+
+    <footer class="footer"><strong>MIKA</strong><br>每一個身份，都不是副業；是我生活裡不同的入口。</footer>
   </main>
+
+  <button class="to-top" id="toTop" type="button" aria-label="回到頁首">↑</button>
+
+  <script>
+    // ------------------------------------------------------------
+    // MIKA HUB TRACKING
+    // 1) 有 data-utm 的官網連結會自動加 UTM，方便在目的站 GA4 看到來源。
+    // 2) 每個 data-track 點擊都已準備好 GA4 event hook；日後此頁加入 gtag 後會自動送出。
+    // ------------------------------------------------------------
+    const trackedLinks = document.querySelectorAll('[data-track]');
+
+    document.querySelectorAll('a[data-utm]').forEach(link => {
+      try {
+        const url = new URL(link.href);
+        url.searchParams.set('utm_source','mika_hub');
+        url.searchParams.set('utm_medium','referral');
+        url.searchParams.set('utm_campaign','profile_hub');
+        url.searchParams.set('utm_content',link.dataset.utm);
+        link.href = url.toString();
+      } catch(e) {}
+    });
+
+    trackedLinks.forEach(el => {
+      el.addEventListener('click', () => {
+        const name = el.dataset.track || 'unknown';
+        const href = el.href || window.location.href;
+        if (typeof window.gtag === 'function') {
+          window.gtag('event','mika_hub_click',{link_name:name,link_url:href});
+        }
+        // 僅作此瀏覽器除錯預覽，不是跨使用者統計。
+        try {
+          const raw = localStorage.getItem('mikaHubPreviewClicks');
+          const data = raw ? JSON.parse(raw) : {};
+          data[name] = (data[name] || 0) + 1;
+          localStorage.setItem('mikaHubPreviewClicks', JSON.stringify(data));
+        } catch(e) {}
+      });
+    });
+
+    // Share
+    document.getElementById('sharePage').addEventListener('click', async () => {
+      const shareData = {title:'MIKA｜設計 × 直覺 × 生活 × 善意',text:'這裡可以找到 GAE、SUNSEE、MIKA 日常與考照服務。',url:location.href};
+      try {
+        if (navigator.share) await navigator.share(shareData);
+        else {
+          await navigator.clipboard.writeText(location.href);
+          const btn = document.getElementById('sharePage');
+          const old = btn.textContent; btn.textContent = '連結已複製 ✓'; setTimeout(()=>btn.textContent=old,1800);
+        }
+      } catch(e) {}
+    });
+
+    // Collaboration message builder
+    const collabMap = {
+      mika:{label:'品牌／探店／旅宿／生活合作',url:'https://www.instagram.com/mika_tsai1123',cta:'前往 MIKA Instagram'},
+      gae:{label:'GAE 占卜／活動合作',url:'https://www.instagram.com/gae.card/',cta:'前往 GAE Instagram'},
+      sunsee:{label:'SUNSEE 公益合作',url:'https://sunsee.tw/#participate',cta:'前往 SUNSEE 合作入口'},
+      drive:{label:'駕訓班／考照異業合作',url:'https://line.me/R/ti/p/@car828',cta:'前往 LINE @car828'}
+    };
+
+    const form = document.getElementById('collabForm');
+    const resultBox = document.getElementById('resultBox');
+    const resultText = document.getElementById('resultText');
+    const resultStatus = document.getElementById('resultStatus');
+    const contactGo = document.getElementById('contactGo');
+    const contactGoText = document.getElementById('contactGoText');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const type = document.getElementById('collabType').value;
+      const name = document.getElementById('collabName').value.trim();
+      const contact = document.getElementById('collabContact').value.trim();
+      const message = document.getElementById('collabMessage').value.trim();
+      if (!type || !name || !message) return;
+      const target = collabMap[type];
+      const text = `MIKA 你好，我想詢問合作。\n\n合作類型：${target.label}\n姓名／品牌：${name}\n聯絡方式：${contact || '未填寫'}\n\n合作想法：\n${message}\n\n謝謝，期待有機會一起合作。`;
+      resultText.textContent = text;
+      resultBox.classList.add('show');
+      contactGo.classList.add('show');
+      contactGo.href = target.url;
+      contactGo.dataset.track = 'collab_go_' + type;
+      contactGoText.textContent = target.cta;
+      let copied = false;
+      try { await navigator.clipboard.writeText(text); copied = true; } catch(err) {}
+      resultStatus.textContent = copied ? '合作訊息已整理並複製 ✓' : '合作訊息已整理完成';
+      resultBox.scrollIntoView({behavior:'smooth',block:'nearest'});
+      if (typeof window.gtag === 'function') window.gtag('event','collab_message_generated',{collab_type:type});
+    });
+
+    document.getElementById('clearForm').addEventListener('click', () => {
+      form.reset(); resultBox.classList.remove('show'); contactGo.classList.remove('show'); resultText.textContent='';
+    });
+
+    // Top button
+    const toTop = document.getElementById('toTop');
+    addEventListener('scroll',()=>toTop.classList.toggle('show',scrollY>520),{passive:true});
+    toTop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+  </script>
 </body>
 </html>
