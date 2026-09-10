@@ -87,6 +87,117 @@
     .section-title{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.16em;color:#8B817B;font-weight:900;margin:28px 4px 12px;text-transform:uppercase}
     .section-title:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--line),transparent)}
 
+
+
+    /* DIGITAL CARD */
+    .digital-card{
+      position:relative;overflow:hidden;padding:24px;border:1px solid rgba(255,255,255,.22);border-radius:30px;
+      background:linear-gradient(135deg,#657987 0%,#7E8F9B 52%,#9A8B83 100%);
+      box-shadow:0 20px 42px rgba(70,82,92,.20);color:#fff;
+    }
+    .digital-card:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:-95px;top:-120px;background:rgba(255,255,255,.09)}
+    .digital-card:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;left:-70px;bottom:-95px;background:rgba(255,255,255,.07)}
+    .digital-card-head{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px}
+    .digital-card-head h2{margin:0;font-family:Georgia,"Noto Serif TC",serif;font-size:25px;font-weight:600;color:#fff}
+    .digital-card-head p{margin:5px 0 0;color:rgba(255,255,255,.80);font-size:12px}
+    .social-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+    .social-chip{
+      min-height:48px;padding:9px 8px;border-radius:15px;background:rgba(255,255,255,.92);
+      border:1px solid rgba(255,255,255,.55);color:#596B78;
+      display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;font-weight:900;
+      box-shadow:0 7px 18px rgba(38,49,56,.10);transition:.2s ease
+    }
+    .social-chip:hover{transform:translateY(-2px);background:#fff}
+    .mini-identity-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .mini-identity{padding:16px;border-radius:20px;border:1px solid var(--line);background:rgba(255,253,249,.82);box-shadow:var(--shadow-soft)}
+    .mini-identity .mini-label{font-size:9px;letter-spacing:.13em;font-weight:900;color:#8A817B;text-transform:uppercase;margin-bottom:5px}
+    .mini-identity h3{margin:0 0 5px;font-size:15px;line-height:1.45;color:#5C534E}
+    .mini-identity p{margin:0 0 10px;font-size:11px;line-height:1.65;color:#837A74}
+    .mini-identity a{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:900;color:var(--blue-deep)}
+
+    .gae-mini{background:linear-gradient(145deg,rgba(255,253,249,.96),rgba(241,233,225,.92));border-color:rgba(128,109,100,.20)}
+    .gae-mini .mini-label{color:var(--taupe-deep)}
+    .gae-mini-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    .booth-toggle{border:0;background:#6E7F8B;color:#fff;border-radius:999px;padding:8px 11px;font-size:11px;font-weight:900;cursor:pointer}
+    .booth-inline{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(93,78,70,.18)}
+    .booth-inline summary{list-style:none;cursor:pointer}
+    .booth-inline summary::-webkit-details-marker{display:none}
+    .booth-inline-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .booth-inline-title{font-size:11px;font-weight:900;color:#5F5550}
+    .booth-inline-arrow{font-size:14px;color:var(--blue-deep)}
+    .booth-inline-body{padding-top:11px}
+    .booth-date-mini{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:9px}
+    .booth-date-mini span{padding:6px 9px;border-radius:999px;background:#EDF1F2;color:#687986;font-size:10px;font-weight:900}
+    .booth-inline-meta{font-size:10px;line-height:1.75;color:#7D746E;margin-bottom:9px}
+    .booth-inline-link{display:inline-flex!important;padding:7px 10px;border-radius:999px;background:#F1E9E1;color:#806D64!important}
+
+    .map-inline{position:relative;z-index:1;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18)}
+    .map-inline summary{list-style:none;cursor:pointer}
+    .map-inline summary::-webkit-details-marker{display:none}
+    .map-inline-btn{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:18px;background:rgba(255,255,255,.90);border:1px solid rgba(255,255,255,.55);color:#5A6C79;font-size:12px;font-weight:900;box-shadow:0 7px 18px rgba(38,49,56,.08)}
+    .map-inline-btn small{display:block;font-size:10px;font-weight:700;color:#8A98A2;letter-spacing:.08em;margin-top:2px}
+    .map-inline-btn .arrow{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#EEF1F2;color:#6A7B88;font-size:16px;line-height:1;flex-shrink:0}
+    .map-inline-body{padding-top:10px}
+    .map-inline-body .discover-card{background:rgba(255,255,255,.93);border-color:rgba(255,255,255,.45);box-shadow:0 12px 30px rgba(38,49,56,.10)}
+    .gae-feature-wrap{margin-top:16px}
+    .gae-feature{padding:20px 20px 18px;border-radius:28px;background:linear-gradient(145deg,rgba(255,253,249,.98),rgba(241,233,225,.94));border:1px solid rgba(128,109,100,.20);box-shadow:var(--shadow-soft)}
+    .gae-feature-head{display:block;gap:12px}
+    .gae-feature-main h2{margin:0 0 6px;font-family:Georgia,"Noto Serif TC",serif;font-size:28px;line-height:1.28;color:#5C534E}
+    .gae-feature-main p{margin:0;color:#7A716C;font-size:12px;line-height:1.8}
+        .gae-feature-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .gae-feature-actions a,.gae-feature-actions button{min-height:38px}
+    .daily-embed{margin-top:14px;padding:14px 15px;border-radius:20px;background:rgba(255,255,255,.72);border:1px solid rgba(93,78,70,.10)}
+    .daily-embed-kicker{font-size:10px;letter-spacing:.14em;color:var(--taupe-deep);font-weight:900;margin-bottom:5px}
+    .daily-embed .daily-date{margin-bottom:8px;font-size:10px}
+    .daily-embed .daily-message{font-size:22px;line-height:1.55;margin:0 0 12px}
+    .daily-embed .daily-actions{gap:8px}
+
+    .digital-card,.gae-feature,.intent-wrap,.current-card,.mini-identity,.collab-card{animation:fadeLift .6s ease both}
+    .map-inline-body{animation:fadeLift .28s ease both}
+    details[open] .map-inline-btn .arrow, details[open] .booth-inline-arrow{transform:rotate(180deg)}
+    .map-inline-btn .arrow,.booth-inline-arrow{transition:transform .22s ease}
+    @keyframes fadeLift{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .intent-head strong{font-size:30px;line-height:1.35}
+    .intent-head span{line-height:1.8}
+    .map-inline{margin-top:14px}
+    .map-inline-btn{padding:13px 15px;background:rgba(255,255,255,.95);color:#4F6472}
+    .map-inline-btn small{color:#6E8190}
+    .map-inline-body .discover-card{color:#5F5751}
+    .map-inline-body .discover-head h2{color:#5C534E;font-size:24px;line-height:1.42}
+    .map-inline-body .discover-head p{color:#756D67;line-height:1.75}
+    .map-inline-body .discover-filter{color:#6C645F;background:#fff}
+    .map-inline-body .discover-filter:hover,.map-inline-body .discover-filter.active{color:#7C675A;background:#F0E9E3}
+    .map-inline-body .discover-actions .mini-btn{color:#6B625D}
+    .map-inline-body .discover-actions .mini-btn.primary{color:#fff}
+    .map-inline-body .discover-result,.map-inline-body .venue-count{color:#7B726B}
+    .map-inline-body .venue-card{background:rgba(255,255,255,.94);border-color:rgba(93,78,70,.09)}
+    .map-inline-body .venue-name{color:#5C534E}
+    .map-inline-body .venue-note,.map-inline-body .venue-meta,.map-inline-body .venue-tag{color:#7C736D}
+    .map-inline-body .venue-link{color:#6B7D89}
+    .daily-embed{background:linear-gradient(135deg,rgba(255,255,255,.82),rgba(245,240,233,.92));}
+    .daily-embed .daily-message{color:#5B524D;letter-spacing:.01em}
+    .daily-embed .mini-btn{padding:9px 12px}
+
+
+
+    /* FOLD / ACCORDION */
+    .fold-card{margin:0;padding:0;border:0}
+    .fold-summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;border:1px solid var(--line);border-radius:24px;background:rgba(255,253,249,.85);box-shadow:var(--shadow-soft);cursor:pointer;transition:.22s ease}
+    .fold-summary::-webkit-details-marker{display:none}
+    .fold-summary:hover{transform:translateY(-1px)}
+    .fold-copy{min-width:0}
+    .fold-kicker{font-size:10px;letter-spacing:.14em;font-weight:900;color:var(--blue-deep);text-transform:uppercase;margin-bottom:4px}
+    .fold-summary h2{margin:0;font-family:Georgia,"Noto Serif TC",serif;font-size:23px;font-weight:600;line-height:1.35;color:#5B514C}
+    .fold-summary p{margin:4px 0 0;color:#7D746E;font-size:12px;line-height:1.75}
+    .fold-cta{display:flex;align-items:center;gap:10px;flex-shrink:0;padding:10px 12px;border-radius:999px;background:#F3ECE6;border:1px solid rgba(93,78,70,.10);font-size:11px;font-weight:900;color:#6E645E}
+    .fold-cta .opened{display:none}
+    .fold-arrow{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--paper-blue);color:var(--blue-deep);font-size:16px;line-height:1;transition:transform .22s ease}
+    details[open] > .fold-summary{border-bottom-left-radius:20px;border-bottom-right-radius:20px}
+    details[open] > .fold-summary .fold-cta .closed{display:none}
+    details[open] > .fold-summary .fold-cta .opened{display:inline}
+    details[open] > .fold-summary .fold-arrow{transform:rotate(180deg)}
+    .fold-panel{padding-top:10px}
+
     /* QUICK INTENT */
     .intent-wrap{padding:18px;border:1px solid var(--line);border-radius:28px;background:rgba(255,253,249,.76);box-shadow:var(--shadow-soft)}
     .intent-head{margin-bottom:13px}
@@ -101,6 +212,59 @@
     .intent-icon{width:36px;height:36px;flex:0 0 36px;border-radius:12px;display:grid;place-items:center;background:var(--intent-bg,#F2EAE4);font-size:17px}
     .intent-copy strong{display:block;font-size:13px;line-height:1.35;margin-bottom:2px}
     .intent-copy small{display:block;font-size:10px;color:#8A817A;line-height:1.45}
+
+
+
+    /* DAILY NOTE */
+    .daily-card{
+      position:relative;overflow:hidden;padding:24px;border-radius:30px;border:1px solid var(--line);
+      background:linear-gradient(135deg,rgba(255,253,249,.97),rgba(241,233,225,.88));box-shadow:var(--shadow-soft)
+    }
+    .daily-card:before{content:"";position:absolute;width:210px;height:210px;border-radius:50%;right:-110px;top:-115px;background:rgba(184,155,146,.14)}
+    .daily-kicker{position:relative;z-index:1;font-size:10px;letter-spacing:.16em;color:var(--taupe-deep);font-weight:900;margin-bottom:8px}
+    .daily-date{position:relative;z-index:1;font-size:11px;color:var(--muted);margin-bottom:12px}
+    .daily-message{position:relative;z-index:1;font-family:Georgia,"Noto Serif TC",serif;font-size:clamp(22px,5vw,29px);line-height:1.55;font-weight:600;letter-spacing:.02em;margin:0 0 18px;color:#625851}
+    .daily-actions{position:relative;z-index:1;display:flex;gap:8px;flex-wrap:wrap}
+    .mini-btn{border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px 13px;font-size:11px;font-weight:900;cursor:pointer;transition:.2s ease}
+    .mini-btn.primary{background:var(--taupe);color:#fff;border-color:transparent}
+    .mini-btn:hover{transform:translateY(-1px)}
+    .daily-note{position:relative;z-index:1;margin:12px 0 0;font-size:10px;color:#948A83}
+
+    /* MIKA MAP / DISCOVERY */
+    .discover-card{padding:21px;border-radius:30px;border:1px solid var(--line);background:rgba(255,253,249,.91);box-shadow:var(--shadow-soft)}
+    .discover-head h2{font-family:Georgia,"Noto Serif TC",serif;font-size:23px;font-weight:600;margin:0 0 5px}
+    .discover-head p{font-size:12px;color:#78706A;margin:0 0 16px}
+    .discover-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+    .discover-filter{border:1px solid var(--line);background:#fff;border-radius:16px;min-height:54px;padding:9px 8px;font-size:11px;font-weight:900;cursor:pointer;transition:.2s ease;text-align:center}
+    .discover-filter:hover,.discover-filter.active{background:#F0E9E3;transform:translateY(-1px)}
+    .map-preview{margin-top:14px;min-height:190px;border-radius:24px;border:1px dashed rgba(93,78,70,.18);background:
+      radial-gradient(circle at 22% 38%,rgba(184,155,146,.16) 0 7px,transparent 8px),
+      radial-gradient(circle at 66% 30%,rgba(135,152,166,.17) 0 7px,transparent 8px),
+      radial-gradient(circle at 77% 72%,rgba(168,178,163,.19) 0 7px,transparent 8px),
+      linear-gradient(135deg,#F5F0EA,#EDF1F2);
+      display:grid;place-items:center;text-align:center;padding:24px;color:#766E68;position:relative;overflow:hidden
+    }
+    .map-preview:before,.map-preview:after{content:"";position:absolute;border:1px solid rgba(104,121,134,.10);border-radius:50%}
+    .map-preview:before{width:260px;height:100px;transform:rotate(-18deg)}
+    .map-preview:after{width:300px;height:125px;transform:rotate(22deg)}
+    .map-copy{position:relative;z-index:1;max-width:430px}
+    .map-copy strong{display:block;font-size:16px;margin-bottom:5px}
+    .map-copy span{font-size:11px;line-height:1.7;color:#877E77}
+    .discover-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .discover-result{margin-top:10px;padding:11px 13px;border-radius:14px;background:#F4EEE8;color:#746B65;font-size:11px;display:none}
+    .discover-result.show{display:block}
+    .venue-list{display:grid;gap:10px;margin-top:14px}
+    .venue-card{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:15px;border-radius:18px;background:#fff;border:1px solid var(--line);transition:.2s ease}
+    .venue-card:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(80,69,63,.06)}
+    .venue-card[hidden]{display:none}
+    .venue-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:5px}
+    .venue-tag{font-size:9px;font-weight:900;letter-spacing:.05em;padding:4px 7px;border-radius:999px;background:#F3EDE7;color:#81766F}
+    .venue-name{font-size:15px;font-weight:900;margin:0 0 3px;line-height:1.35}
+    .venue-note{font-size:11px;color:#817872;line-height:1.6;margin:0}
+    .venue-links{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+    .venue-link{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 10px;border-radius:11px;background:#EDF1F2;color:#687986;font-size:10px;font-weight:900;white-space:nowrap}
+    .venue-link.social{background:#F1E9E1;color:#806D64}
+    .venue-count{font-size:10px;color:#948A83;margin-top:10px;text-align:right}
 
     /* SHOP / CURRENT */
     .current-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
@@ -150,6 +314,27 @@
     .current-card .btn{position:relative;z-index:1;background:var(--blue);color:#fff;border-color:transparent}
     .current-card.mood .btn{background:var(--rose)}
 
+
+    /* GAE BOOTH */
+    .gae-event-card{padding:24px;border:1px solid var(--line);border-radius:30px;background:linear-gradient(135deg,rgba(255,253,249,.96),rgba(241,233,225,.88));box-shadow:var(--shadow-soft);overflow:hidden;position:relative}
+    .gae-event-card:before,.gae-event-card:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+    .gae-event-card:before{width:220px;height:220px;right:-110px;top:-120px;background:rgba(135,152,166,.12)}
+    .gae-event-card:after{width:180px;height:180px;left:-90px;bottom:-120px;background:rgba(184,155,146,.10)}
+    .gae-event-top{position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start}
+    .gae-event-kicker{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.72);border:1px solid rgba(93,78,70,.09);font-size:10px;font-weight:900;letter-spacing:.14em;color:var(--taupe-deep);text-transform:uppercase;margin-bottom:10px}
+    .gae-event-top h2{margin:0 0 8px;font-family:Georgia,"Noto Serif TC",serif;font-size:26px;font-weight:600;line-height:1.3;color:#5C514C}
+    .gae-event-top p{margin:0;color:#786F69;font-size:13px;line-height:1.85;max-width:510px}
+    .gae-event-badge{min-width:118px;padding:14px 12px;border-radius:22px;background:linear-gradient(180deg,var(--blue) 0%,var(--blue-deep) 100%);color:#fff;text-align:center;box-shadow:0 12px 26px rgba(104,121,134,.18);font-size:11px;font-weight:900;letter-spacing:.12em;line-height:1.5}
+    .gae-event-badge span{display:block;font-size:12px;letter-spacing:.04em;margin-top:4px;font-weight:700}
+    .gae-date-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:18px 0 14px}
+    .gae-date-item{padding:14px 10px 12px;border-radius:22px;background:rgba(255,255,255,.72);border:1px solid rgba(93,78,70,.10);text-align:center;box-shadow:0 8px 18px rgba(92,77,67,.05)}
+    .gae-date-item .month{display:block;font-size:10px;letter-spacing:.14em;font-weight:900;color:var(--blue-deep);margin-bottom:4px}
+    .gae-date-item strong{display:block;font-size:28px;line-height:1;font-family:Georgia,"Noto Serif TC",serif;color:#5F554F}
+    .gae-date-item small{display:block;margin-top:5px;font-size:11px;color:#8A817B;font-weight:800}
+    .gae-event-meta{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:8px 16px;color:#6F6660;font-size:13px;line-height:1.8}
+    .gae-event-meta strong{color:#5B514B}
+    .gae-event-actions{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+
     /* COLLAB */
     .collab-card{border:1px solid var(--line);border-radius:30px;background:rgba(255,253,249,.9);box-shadow:var(--shadow);overflow:hidden}
     .collab-head{padding:23px 23px 16px;background:linear-gradient(135deg,rgba(241,233,225,.68),rgba(237,241,242,.55))}
@@ -186,7 +371,24 @@
       .profile-link{width:132px;height:132px;border-radius:50%;margin:0 auto;transform:none;border-width:6px}
       .profile-link:hover{transform:translateY(-2px)}.photo-hint{display:none}.chips,.hero-row{justify-content:center}.bio{max-width:420px;margin-left:auto;margin-right:auto}
       .intent-grid,.current-grid,.form-row,.collab-actions{grid-template-columns:1fr}
+      .digital-card{padding:20px 17px}
+      .digital-card-head h2{font-size:22px}
+      .social-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .social-chip:last-child{grid-column:1/-1}
+      .discover-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .intent{min-height:64px}.current-desc{min-height:0}
+      .social-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .mini-identity-grid{grid-template-columns:1fr}
+      .fold-summary{flex-direction:column;align-items:flex-start;padding:16px 16px 15px}
+      .fold-summary h2{font-size:20px}
+      .fold-cta{width:100%;justify-content:space-between}
+      .gae-event-card{padding:18px}
+      .gae-event-top{grid-template-columns:1fr}
+      .gae-event-top h2{font-size:22px}
+      .gae-event-badge{min-width:0;width:fit-content}
+      .gae-date-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .gae-date-item strong{font-size:24px}
+      .gae-event-actions{flex-direction:column}
       .mood-cta{grid-template-columns:1fr;text-align:center}.mood-circle{margin:0 auto}
       .card-main{padding:19px 18px 16px}.mark{width:44px;height:44px;flex-basis:44px;border-radius:14px}.title{font-size:18px}.actions{grid-template-columns:1fr!important}
     }
@@ -213,9 +415,92 @@
       </div>
     </header>
 
-    <div class="section-title">Start here · 今天想找我做什麼？</div>
+
+    <div class="section-title">Digital card · 我的社群名片</div>
+    <section class="digital-card" aria-label="MIKA 社群名片">
+      <div class="digital-card-head"><div><h2>找到我，也可以先從這裡開始。</h2><p>日常、吃喝玩樂與近況，都在這裡。</p></div></div>
+      <div class="social-grid">
+        <a class="social-chip" data-track="card_instagram" href="https://www.instagram.com/mika_tsai1123" target="_blank" rel="noopener">Instagram ↗</a>
+        <a class="social-chip" data-track="card_facebook" href="https://www.facebook.com/share/1VTyuL1kRG/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook ↗</a>
+        <a class="social-chip" data-track="card_threads" href="https://www.threads.com/@mika_tsai1123?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener">Threads ↗</a>
+        <a class="social-chip" data-track="card_tiktok" href="https://www.tiktok.com/@mika1123k?_r=1&amp;_t=ZS-991hWmYQ3HQ" target="_blank" rel="noopener">TikTok ↗</a>
+        <a class="social-chip" data-track="card_youtube" href="https://www.youtube.com/@mika_tsai1123" target="_blank" rel="noopener">YouTube ↗</a>
+      </div>
+      <details class="map-inline">
+        <summary>
+          <div class="map-inline-btn"><span>MIKA 吃喝玩樂地圖<small>點開查看完整內容</small></span><span class="arrow">⌄</span></div>
+        </summary>
+        <div class="map-inline-body">
+          <section class="discover-card" aria-label="MIKA 吃喝玩樂地圖">
+          <div class="discover-head"><h2>從我去過的店開始找。</h2><p>依分類找店家，也能直接看原貼文。</p></div>
+          <div class="discover-grid" id="discoverFilters">
+            <button class="discover-filter active" type="button" data-category="全部">✨ 全部</button>
+            <button class="discover-filter" type="button" data-category="咖啡">☕ 咖啡</button>
+            <button class="discover-filter" type="button" data-category="吃飯">🍜 吃飯</button>
+            <button class="discover-filter" type="button" data-category="體驗">🕯️ 體驗</button>
+            <button class="discover-filter" type="button" data-category="住宿">🏨 住宿</button>
+            <button class="discover-filter" type="button" data-category="親子">👨‍👩‍👧 親子</button>
+            <button class="discover-filter" type="button" data-category="台中">🌆 台中</button>
+            <button class="discover-filter" type="button" data-category="苗栗">🌿 苗栗</button>
+          </div>
+          <div class="venue-list" id="venueList"></div>
+          <div class="discover-actions"><button class="mini-btn primary" id="pickForMe" type="button">今天幫我選一家 ↗</button><a class="mini-btn" data-track="map_instagram" href="https://www.instagram.com/mika_tsai1123" target="_blank" rel="noopener">看更多 MIKA IG</a></div>
+          <div class="discover-result" id="discoverResult"></div>
+          <div class="venue-count" id="venueCount"></div>
+        </section>
+        </div>
+      </details>
+    </section>
+
+    
+
+    <section class="gae-feature-wrap" aria-label="GAE 甲意卡意直覺占卜">
+      <article class="mini-identity gae-mini gae-feature" id="gae">
+        <div class="gae-feature-head">
+          <div class="gae-feature-main">
+            <div class="mini-label">GAE · INTUITIVE READING</div>
+            <h2>GAE 甲意｜卡意直覺占卜</h2>
+            <p>直覺占卜、靈魂解析與宮位解讀。</p>
+          </div>
+                  </div>
+        <div class="gae-feature-actions">
+          <a class="mini-btn primary" data-track="mini_gae" data-utm="mini_gae" href="https://gae.tw/" target="_blank" rel="noopener">進入 GAE ↗</a>
+          <a class="mini-btn" data-track="moodcard_draw" data-utm="moodcard_draw" href="https://gae.tw/moodcard" target="_blank" rel="noopener">抽心情小卡 ↗</a>
+        </div>
+        <div class="daily-embed">
+          <div class="daily-embed-kicker">GAE · TODAY'S MESSAGE</div>
+          <div class="daily-date" id="dailyDate"></div>
+          <p class="daily-message" id="dailyMessage">今天先把目光留給自己。</p>
+          <div class="daily-actions">
+            <button class="mini-btn primary" id="anotherMessage" type="button">換一句</button>
+            <button class="mini-btn" id="shareMessage" type="button">分享這句話 ↗</button>
+          </div>
+        </div>
+        <details class="booth-inline">
+          <summary>
+            <div class="booth-inline-head">
+              <span class="booth-inline-title">📍 查看統領擺攤日期</span>
+              <span class="booth-inline-arrow">⌄</span>
+            </div>
+          </summary>
+          <div class="booth-inline-body">
+            <div class="booth-date-mini">
+              <span>9/20 週日</span>
+              <span>10/10 週六</span>
+              <span>10/11 週日</span>
+              <span>10/24 週六</span>
+              <span>10/25 週日</span>
+            </div>
+            <div class="booth-inline-meta">桃園統領百貨廣場｜11:00–20:30<br>服務內容：GAE 現場直覺占卜</div>
+            <a class="booth-inline-link" href="https://www.google.com/maps/search/?api=1&query=%E6%A1%83%E5%9C%92%E7%B5%B1%E9%A0%98%E7%99%BE%E8%B2%A8%E5%BB%A3%E5%A0%B4" target="_blank" rel="noopener">打開地圖 ↗</a>
+          </div>
+        </details>
+      </article>
+    </section>
+
+    <div class="section-title">Quick links · 快速入口</div>
     <section class="intent-wrap" aria-label="快速找到 MIKA 的服務">
-      <div class="intent-head"><strong>不用先認識我的每個身份。</strong><span>直接從你現在想做的事開始。</span></div>
+      <div class="intent-head"><strong>直接選你現在想做的事。</strong><span>不用先看完整介紹。</span></div>
       <div class="intent-grid">
         <a class="intent" data-track="quick_reading" href="#gae"><span class="intent-icon" style="--intent-bg:#F1E8E2">◌</span><span class="intent-copy"><strong>我想占卜</strong><small>GAE・直覺占卜・宮位解析</small></span></a>
         <a class="intent" data-track="quick_collab" href="#collab"><span class="intent-icon" style="--intent-bg:#F3EAE7">✦</span><span class="intent-copy"><strong>找 MIKA 探店／合作</strong><small>品牌・旅宿・美食・生活體驗</small></span></a>
@@ -223,8 +508,7 @@
         <a class="intent" data-track="quick_driving" href="#drive"><span class="intent-icon" style="--intent-bg:#EAF0F2">↗</span><span class="intent-copy"><strong>我要詢問考駕照</strong><small>伊小姐・資格・班別・道路駕駛</small></span></a>
       </div>
     </section>
-
-    <div class="section-title" id="shop">MIKA shop · 本月推薦</div>
+<div class="section-title" id="shop">MIKA shop · 本月推薦</div>
     <section class="current-grid" aria-label="MIKA 本月推薦">
       <article class="current-card energy">
         <div class="product-badge">SERVICE</div>
@@ -244,43 +528,30 @@
       </article>
     </section>
     <p class="shop-note">商品之後可直接替換成綠界商品頁連結，不需要重做整個版面。</p>
-
-    <div class="section-title">A little pause · 今天也留一點目光給自己</div>
-    <section class="mood-cta" aria-label="胖虎貓心情小卡">
-      <div class="mood-copy"><div class="kicker">GAE · DAILY MOOD CARD</div><h2>今天，抽一張給自己的話。</h2><p>不用先想問題。憑直覺抽一張胖虎貓心情小卡，看看此刻有什麼話想提醒你。</p></div>
-      <a class="mood-circle" data-track="moodcard_draw" data-utm="moodcard_draw" href="https://gae.tw/moodcard" target="_blank" rel="noopener">抽一張<br>心情小卡 ↗</a>
-    </section>
-
-    <div class="section-title">Explore · 認識不同的我</div>
-    <section class="stack" aria-label="MIKA 個人品牌入口">
-      <article class="card gae" id="gae">
-        <div class="card-main"><div class="mark">G</div><div class="copy"><div class="label">INTUITIVE READING</div><h2 class="title">GAE 甲意｜卡意直覺占卜</h2><p class="desc">直覺占卜・靈魂解析・宮位解讀。把目光留給自己，看懂此刻真正需要的方向。</p></div></div>
-        <div class="actions" style="--cols:2"><a class="btn primary" data-track="gae_website" data-utm="gae_card" href="https://gae.tw/" target="_blank" rel="noopener"><span>GAE 官網</span><span class="arrow">↗</span></a><a class="btn" data-track="gae_instagram" href="https://www.instagram.com/gae.card/" target="_blank" rel="noopener"><span>Instagram @gae.card</span><span class="arrow">↗</span></a></div>
+<div class="section-title">More · 其他入口</div>
+    <section class="mini-identity-grid" aria-label="MIKA 其他服務入口">
+      
+      <article class="mini-identity" id="sunsee">
+        <div class="mini-label">SUNSEE · GOODWILL</div>
+        <h3>SUNSEE｜善行微光公益</h3>
+        <p>讓善意被看見，串起願意多做一點的人。</p>
+        <a data-track="mini_sunsee" data-utm="mini_sunsee" href="https://sunsee.tw/" target="_blank" rel="noopener">進入 SUNSEE ↗</a>
       </article>
-
-      <article class="card sunsee" id="sunsee">
-        <div class="card-main"><div class="mark">S</div><div class="copy"><div class="label">GOODWILL PROJECT</div><h2 class="title">SUNSEE｜善行微光公益</h2><p class="desc">讓善意被看見。串起願意多做一點的店家、老師、創作者與每一位參與的人。</p></div></div>
-        <div class="actions"><a class="btn primary" data-track="sunsee_website" data-utm="sunsee_card" href="https://sunsee.tw/" target="_blank" rel="noopener"><span>進入 SUNSEE 官網</span><span class="arrow">↗</span></a></div>
-      </article>
-
-      <article class="card mika" id="mika">
-        <div class="card-main"><div class="mark">M</div><div class="copy"><div class="label">FOOD · TRAVEL · DAILY LIFE</div><h2 class="title">MIKA｜占卜師吃喝玩樂日常</h2><p class="desc">離開牌桌之後的真實日常。吃、住、旅行、體驗，也記錄一個占卜師怎麼生活。</p></div></div>
-        <div class="actions" style="--cols:2">
-          <a class="btn primary wide" data-track="mika_instagram" href="https://www.instagram.com/mika_tsai1123" target="_blank" rel="noopener"><span>Instagram @mika_tsai1123</span><span class="arrow">↗</span></a>
-          <a class="btn" data-track="mika_facebook" href="https://www.facebook.com/share/1VTyuL1kRG/?mibextid=wwXIfr" target="_blank" rel="noopener"><span>Facebook</span><span class="arrow">↗</span></a>
-          <a class="btn" data-track="mika_threads" href="https://www.threads.com/@mika_tsai1123?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener"><span>Threads</span><span class="arrow">↗</span></a>
-          <a class="btn" data-track="mika_tiktok" href="https://www.tiktok.com/@mika1123k?_r=1&amp;_t=ZS-991hWmYQ3HQ" target="_blank" rel="noopener"><span>TikTok @mika1123k</span><span class="arrow">↗</span></a>
-          <a class="btn" data-track="mika_youtube" href="https://www.youtube.com/@mika_tsai1123" target="_blank" rel="noopener"><span>YouTube @mika_tsai1123</span><span class="arrow">↗</span></a>
-        </div>
-      </article>
-
-      <article class="card drive" id="drive">
-        <div class="card-main"><div class="mark">I</div><div class="copy"><div class="label">DRIVING LICENSE SERVICE</div><h2 class="title">考駕照的伊小姐｜長榮汽車考照服務</h2><p class="desc">職業小客、大貨車、大客車、道路駕駛陪練與考照諮詢，先確認資格再安排適合流程。</p></div></div>
-        <div class="actions" style="--cols:2"><a class="btn primary" data-track="driving_website" data-utm="driving_card" href="https://www.0913741123.com.tw/" target="_blank" rel="noopener"><span>考照服務官網</span><span class="arrow">↗</span></a><a class="btn" data-track="driving_line" href="https://line.me/R/ti/p/@car828" target="_blank" rel="noopener"><span>LINE @car828</span><span class="arrow">↗</span></a></div>
+      <article class="mini-identity" id="drive">
+        <div class="mini-label">MISS I · DRIVING LICENSE</div>
+        <h3>考駕照的伊小姐</h3>
+        <p>職業小客、大貨車、大客車與道路駕駛諮詢。</p>
+        <a data-track="mini_drive" data-utm="mini_drive" href="https://www.0913741123.com.tw/" target="_blank" rel="noopener">考照服務 ↗</a>
       </article>
     </section>
 
     <div class="section-title" id="collab">Work with MIKA · 一起合作</div>
+    <details class="fold-card">
+      <summary class="fold-summary">
+        <div class="fold-copy"><div class="fold-kicker">COLLABORATION</div><h2>品牌、探店、公益或異業合作</h2><p>有合作想法再點開填寫，不讓首頁變得太長。</p></div>
+        <div class="fold-cta"><span class="closed">展開合作</span><span class="opened">收起內容</span><span class="fold-arrow">⌄</span></div>
+      </summary>
+      <div class="fold-panel">
     <section class="collab-card" aria-label="MIKA 合作邀約">
       <div class="collab-head"><div class="label">COLLABORATION</div><h2>有一些事情，我們可以一起完成。</h2><p>選擇合作類型、留下簡單內容，網站會幫你整理成一段可以直接傳給我的訊息。</p></div>
       <form class="collab-form" id="collabForm">
@@ -295,6 +566,8 @@
         <p class="form-note">這個表單不會把資料儲存在網站。產生後會在你的裝置上整理文字，再由你自行前往對應聯絡入口送出。</p>
       </form>
     </section>
+      </div>
+    </details>
 
     <footer class="footer"><strong>MIKA</strong><br>每一個身份，都不是副業；是我生活裡不同的入口。</footer>
   </main>
@@ -335,6 +608,114 @@
           localStorage.setItem('mikaHubPreviewClicks', JSON.stringify(data));
         } catch(e) {}
       });
+    });
+
+
+
+    // Daily message: stable message for the calendar day, optional manual redraw.
+    const dailyMessages = [
+      '今天先把目光留給自己。',
+      '不是每一個答案，都需要今天得到。',
+      '有些疲累，是身體比你更早知道答案。',
+      '今天不用證明自己，先好好生活。',
+      '不是放棄，是把力氣留給值得的地方。',
+      '你可以慢一點，方向對了就不算晚。',
+      '先照顧自己的感受，再決定要不要回應別人。',
+      '有些事情放下，不代表它從來不重要。',
+      '今天只完成一件真正重要的事，也很好。',
+      '不是所有人的期待，都需要由你完成。',
+      '當你不再勉強，真正適合你的才有位置進來。',
+      '允許今天的自己，只做到今天能做到的程度。',
+      '你不需要急著替所有關係找答案。',
+      '把注意力收回來，看看自己現在真正需要什麼。',
+      '有時候，安靜也是一種很清楚的選擇。',
+      '今天少一點比較，多一點感受。',
+      '先把生活過回自己的節奏。',
+      '有些路不是走錯，只是讓你更知道自己不要什麼。',
+      '你可以改變決定，不必為過去的選擇困住現在。',
+      '真正重要的事，不需要一直用力證明。',
+      '今天替自己保留一點空白。',
+      '你已經知道答案的事情，不必再反覆向外確認。',
+      '不急著解決，也是一種整理。',
+      '有些舒服，是因為你終於沒有再勉強自己。'
+    ];
+    const dailyDate = document.getElementById('dailyDate');
+    const dailyMessage = document.getElementById('dailyMessage');
+    const now = new Date();
+    dailyDate.textContent = new Intl.DateTimeFormat('zh-TW',{year:'numeric',month:'long',day:'numeric',weekday:'long'}).format(now);
+    const daySeed = Number(`${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}`);
+    const todayIndex = daySeed % dailyMessages.length;
+    dailyMessage.textContent = dailyMessages[todayIndex];
+    document.getElementById('anotherMessage').addEventListener('click',()=>{
+      let next = Math.floor(Math.random()*dailyMessages.length);
+      if (dailyMessages[next] === dailyMessage.textContent) next = (next+1)%dailyMessages.length;
+      dailyMessage.textContent = dailyMessages[next];
+      if (typeof window.gtag === 'function') window.gtag('event','daily_message_redraw');
+    });
+    document.getElementById('shareMessage').addEventListener('click',async()=>{
+      const text = `MIKA 今日一句｜${dailyMessage.textContent}`;
+      try{
+        if(navigator.share) await navigator.share({title:'MIKA 今日一句',text,url:location.href});
+        else { await navigator.clipboard.writeText(`${text}
+${location.href}`); document.getElementById('shareMessage').textContent='已複製 ✓'; setTimeout(()=>document.getElementById('shareMessage').textContent='分享這句話 ↗',1600); }
+      }catch(e){}
+    });
+
+    // MIKA PICKS · 已收錄店家與原貼文。
+    // 已確認店名的貼文會直接連到原 Reels；未確認的資料先不顯示。
+    const venues = [
+      {name:'千穗拉麵',area:'店家資訊待補',cats:['吃飯'],note:'MIKA 原貼文已收錄。',post:'https://www.instagram.com/reel/Db5zGqLC3fK/',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('千穗拉麵')},
+      {name:'迴響火鍋苗栗',area:'苗栗',cats:['吃飯','苗栗'],note:'MIKA 原貼文已收錄｜苗栗火鍋。',post:'https://www.instagram.com/reel/DcIettTqyJF/',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('迴響火鍋 苗栗')},
+      {name:'苗栗無名水煎包',area:'苗栗',cats:['吃飯','苗栗'],note:'MIKA 原貼文已收錄｜在地小吃。',post:'https://www.instagram.com/reel/DcJOKOYiqjd/',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('苗栗 無名水煎包')},
+      {name:'merest 眠植萃',area:'品牌／生活體驗',cats:['體驗'],note:'MIKA 原貼文已收錄｜眠植萃品牌體驗。',post:'https://www.instagram.com/reel/DcQAb0xibcg/',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('merest 眠植萃')},
+      {name:'饃飯生',area:'新北・三重',cats:['吃飯'],note:'MIKA 原貼文已收錄｜三重吃飯日常。',post:'https://www.instagram.com/reel/Dca6zscCOAg/',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('饃飯生 三重')},
+      {name:'Mr.Stubble 鬍渣先生咖啡',area:'新北・板橋',cats:['咖啡','吃飯'],note:'MIKA 原貼文已收錄｜咖啡、輕食與生活感空間。',post:'https://www.instagram.com/reel/DcdSL_fCcLA/',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('Mr.Stubble 鬍渣先生咖啡 新北 板橋')},
+      {name:'玉津大溪員林店',area:'桃園・大溪',cats:['吃飯'],note:'MIKA 原貼文已收錄。',post:'https://www.instagram.com/reel/Dcim7ltCiRv/',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('玉津 大溪 員林店')},
+
+      {name:'大溪魔法蠟燭',area:'桃園・大溪',cats:['體驗'],note:'MIKA 原貼文已收錄｜大溪手作體驗。',post:'https://www.instagram.com/reel/DclCPdQK5jk/',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('大溪 魔法蠟燭')},
+      {name:'台中瑪榭法式餐廳',area:'台中',cats:['吃飯','台中'],note:'MIKA 原貼文已收錄｜法式餐廳。',post:'https://www.instagram.com/reel/DctBqrBilL1/',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('瑪榭法式餐廳 台中')},
+      {name:'初木山 向上店',area:'台中・向上店',cats:['吃飯','台中'],note:'MIKA 原貼文已收錄。',post:'https://www.instagram.com/reel/Dc_C3orCfvJ/',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('初木山 向上店')},
+      {name:'冠顗油飯｜台中一中街',area:'台中・一中街',cats:['吃飯','台中'],note:'MIKA 原貼文已收錄｜台中一中街小吃。',post:'https://www.instagram.com/reel/Dc2aeYaCB5n/',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('冠顗油飯 台中 一中街')},
+      {name:'奕口涵麵',area:'店家資訊待補',cats:['吃飯'],note:'MIKA 原貼文已收錄。',post:'https://www.instagram.com/reel/Dc5bduKi4D_/',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('奕口涵麵')},
+      {name:'電競客棧宜舍館',area:'台中・中區',cats:['住宿','親子','台中'],note:'MIKA 原貼文已收錄｜台中中區電競旅宿體驗。',post:'https://www.instagram.com/reel/DdBpQhxieL8/',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('電競客棧宜舍館 台中 中區')},
+
+      {name:'第一焿香',area:'近期拍攝',cats:['吃飯'],note:'近期拍攝｜台式小吃。原貼文網址待補。',post:'',map:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('第一焿香 台灣')},
+    ];
+    const discoverResult = document.getElementById('discoverResult');
+    const filters = [...document.querySelectorAll('.discover-filter')];
+    const venueList = document.getElementById('venueList');
+    const venueCount = document.getElementById('venueCount');
+    const mikaIg = 'https://www.instagram.com/mika_tsai1123';
+
+    function venueCard(v){
+      const tags=[v.area,...v.cats].map(t=>`<span class="venue-tag">${t}</span>`).join('');
+      const mapLink = v.map ? `<a class="venue-link" href="${v.map}" target="_blank" rel="noopener" data-track="venue_map_${v.name}">地圖 ↗</a>` : '';
+      const postLink = v.post
+        ? `<a class="venue-link social" href="${v.post}" target="_blank" rel="noopener" data-track="venue_post_${v.name}">看原貼文 ↗</a>`
+        : `<a class="venue-link social" href="${mikaIg}" target="_blank" rel="noopener" data-track="venue_social_${v.name}">原貼文待補</a>`;
+      return `<article class="venue-card" data-cats="${v.cats.join('|')}">
+        <div><div class="venue-meta">${tags}</div><h3 class="venue-name">${v.name}</h3><p class="venue-note">${v.note}</p></div>
+        <div class="venue-links">${mapLink}${postLink}</div>
+      </article>`;
+    }
+    function renderVenues(cat='全部'){
+      const shown = cat==='全部' ? venues : venues.filter(v=>v.cats.includes(cat) || v.area.includes(cat));
+      venueList.innerHTML = shown.map(venueCard).join('');
+      venueCount.textContent = `目前收錄 ${shown.length} / ${venues.length} 個吃喝玩樂地點`;
+      filters.forEach(b=>b.classList.toggle('active',b.dataset.category===cat));
+      discoverResult.classList.remove('show');
+      if (typeof window.gtag === 'function') window.gtag('event','mika_map_category',{category:cat});
+    }
+    filters.forEach(b=>b.addEventListener('click',()=>renderVenues(b.dataset.category)));
+    renderVenues('全部');
+    document.getElementById('pickForMe').addEventListener('click',()=>{
+      const v=venues[Math.floor(Math.random()*venues.length)];
+      const action = v.map
+        ? `<a href="${v.map}" target="_blank" rel="noopener">打開地圖 ↗</a>`
+        : (v.post ? `<a href="${v.post}" target="_blank" rel="noopener">看原貼文 ↗</a>` : '');
+      discoverResult.innerHTML=`今天幫你選：<strong>${v.name}</strong>｜${v.area}　${action}`;
+      discoverResult.classList.add('show');
+      if (typeof window.gtag === 'function') window.gtag('event','mika_pick_random',{venue:v.name});
     });
 
     // Share
