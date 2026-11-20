@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
   <meta property="og:image" content="https://gae.tw/assets/img/hero-forest.jpg">
   <link rel="icon" href="assets/img/logo.jpg">
-  <link rel="preload" as="image" href="assets/img/hero-forest.jpg">
+  <link rel="preload" as="image" href="assets/video/hero-walk-poster.jpg">
   <style>
     :root{
       --mist:#F1E8DA;
@@ -335,9 +335,12 @@
     .hero{min-height:100vh;min-height:100svh;padding:140px 0 0;display:flex;flex-direction:column;background:var(--night);isolation:isolate}
     .hero::before{display:none}
     .scene{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:#1f1513}
-    .stage{position:absolute;left:0;top:0;width:1600px;aspect-ratio:1600/892;transform-origin:0 0}
-    .stage .bg{position:absolute;inset:0;background:url('assets/img/hero-forest.jpg') center/100% 100% no-repeat;transform-origin:49.7% 62%;will-change:transform}
-    .stage .bg-a{animation:fwd 26s ease-in-out infinite alternate}
+    .stage{position:absolute;left:0;top:0;width:1280px;aspect-ratio:1280/664;transform-origin:0 0}
+    .hero-video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;transform:scaleX(-1)}
+    .bloom{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .55s ease;
+      background:radial-gradient(ellipse 70% 90% at var(--beam-x,60%) 20%,rgba(255,246,222,.98),rgba(240,222,180,.85) 45%,rgba(199,165,108,.55) 80%)}
+    .bloom.on{opacity:1}
+    .bloom.off{transition-duration:1.1s}
     @keyframes fwd{from{transform:scale(1)}to{transform:scale(1.08)}}
     .scene::after{
       content:"";position:absolute;inset:0;z-index:3;
@@ -347,15 +350,6 @@
       mix-blend-mode:multiply;
     }
     .scene .tone{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(199,165,108,.10),rgba(94,71,59,.18));mix-blend-mode:soft-light}
-    .beams{position:absolute;inset:0;z-index:2}
-    .beams i{
-      position:absolute;top:-10%;height:120%;transform-origin:top center;
-      background:linear-gradient(180deg,rgba(230,208,166,.32),rgba(230,208,166,.06) 60%,transparent);
-      filter:blur(16px);mix-blend-mode:screen;animation:beam 7s ease-in-out infinite;
-    }
-    .beams i:nth-child(1){left:var(--beam-x,60%);width:8%;transform:skewX(-10deg)}
-    .beams i:nth-child(2){left:calc(var(--beam-x,60%) + 7%);width:3%;transform:skewX(-9deg);animation-delay:-2.5s;animation-duration:9s}
-    .beams i:nth-child(3){left:calc(var(--beam-x,60%) - 6%);width:4%;transform:skewX(-12deg);animation-delay:-5s;animation-duration:11s}
     .fireflies{position:absolute;inset:0;z-index:4}
     .fireflies span{
       position:absolute;width:var(--s,4px);height:var(--s,4px);border-radius:50%;
@@ -637,10 +631,10 @@
       <section class="hero">
         <div class="scene" aria-hidden="true">
           <div class="stage">
-            <div class="bg bg-a"></div>
+            <video class="hero-video" src="assets/video/hero-walk.mp4" poster="assets/video/hero-walk-poster.jpg" autoplay muted playsinline preload="auto" width="1280" height="664"></video>
           </div>
+          <div class="bloom"></div>
           <div class="tone"></div>
-          <div class="beams"><i></i><i></i><i></i></div>
           <div class="fireflies" data-count="22"></div>
         </div>
         <div class="container hero-grid">
@@ -1006,22 +1000,38 @@
     // ---------- forest walk: fit the photo stage, keep the girl in frame ----------
     const scene = document.querySelector('.scene');
     const stage = scene && scene.querySelector('.stage');
-    const GIRL_X = 0.497, FEET_Y = 0.79, RATIO = 1600 / 892;
-    let stageW = 1600;
+    const GIRL_X = 0.56, FEET_Y = 0.92, RATIO = 1280 / 664;
     function layoutStage() {
       if (!stage) return;
       const w = scene.clientWidth, h = scene.clientHeight, mobile = w < 680;
-      const W = mobile ? Math.max(w * 2.5, h * RATIO * 1.05) : Math.max(w * 1.4, h * RATIO);
+      const W = mobile ? Math.max(w * 1.6, h * RATIO) : Math.max(w * 1.08, h * RATIO);
       const H = W / RATIO;
       const gx = mobile ? 0.5 : 0.68, fy = mobile ? 0.93 : 0.93;
       let x = gx * w - GIRL_X * W, y = fy * h - FEET_Y * H;
       x = Math.min(0, Math.max(w - W, x)); y = Math.min(0, Math.max(h - H, y));
-      stage.style.transform = `translate(${x}px, ${y}px) scale(${W / 1600})`;
-      stageW = 1600;
+      stage.style.transform = `translate(${x}px, ${y}px) scale(${W / 1280})`;
       scene.style.setProperty('--beam-x', ((x + GIRL_X * W) / w * 100 - 4) + '%');
     }
     layoutStage();
     window.addEventListener('resize', layoutStage);
+
+    // ---------- hero video: walk, then pass through the light and begin again ----------
+    (function(){
+      const v = document.querySelector('.hero-video'), bloom = document.querySelector('.bloom');
+      if (!v) return;
+      if (reduce) { v.removeAttribute('autoplay'); v.pause(); return; }
+      const tryPlay = () => { const p = v.play(); if (p && p.catch) p.catch(()=>{}); };
+      tryPlay();
+      let blooming = false;
+      v.addEventListener('timeupdate', () => {
+        if (!blooming && v.duration && v.currentTime > v.duration - 0.7) { blooming = true; bloom.classList.remove('off'); bloom.classList.add('on'); }
+      });
+      v.addEventListener('ended', () => {
+        v.currentTime = 0; tryPlay();
+        setTimeout(() => { bloom.classList.add('off'); bloom.classList.remove('on'); blooming = false; }, 120);
+      });
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlay(); });
+    })();
 
 
     // headline: ink each character in, one by one
