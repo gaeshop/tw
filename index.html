@@ -475,6 +475,18 @@
     .service-card--soul .price small{color:var(--lumen)}
     .service-card--soul .service-link{color:rgba(251,246,238,.7);text-decoration:underline;text-underline-offset:5px}
     @media (max-width:1080px){.service-card--soul{grid-template-columns:1fr;padding:34px 30px}.service-card--soul .service-bottom{border-left:0;padding:18px 0 0;border-top:1px solid var(--rule-light)}}
+
+    .portrait-grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:72px;align-items:center}
+    .portrait-photo{aspect-ratio:4/5}
+    .portrait-photo img{object-position:center 20%}
+    .portrait-texts{display:grid;gap:8px}
+    .portrait-card:nth-child(2){margin-top:0}
+    .portrait-texts .portrait-card{padding:28px 0;border-top:1px solid var(--rule)}
+    .portrait-texts .portrait-card:last-child{border-bottom:1px solid var(--rule)}
+    .portrait-texts .portrait-content{padding:0}
+    .portrait-texts .portrait-content h3{font-size:24px;margin-bottom:12px}
+    .portrait-texts .portrait-content p{font-family:var(--serif);font-size:17px;line-height:2.1;color:var(--ink)}
+    @media (max-width:1080px){.portrait-grid{grid-template-columns:1fr;gap:40px}.portrait-photo{max-width:460px}}
   </style>
 
   <!-- SEO / AEO / GEO：讓搜尋引擎與 AI 摘要更容易理解本頁 -->
@@ -848,20 +860,21 @@
             </div>
           </div>
           <div class="portrait-grid">
-            <article class="portrait-card">
-              <div class="arch"><img src="assets/img/mika-session.jpg" alt="MiKA 與胖虎貓合照" width="900" height="1205" loading="lazy"></div>
-              <div class="portrait-content">
-                <h3>主理人 MiKA</h3>
-                <p>用穩定、柔和且有邏輯的方式陪伴每一次提問，讓占卜不只是回答問題，也是一段回到自己內在的整理歷程。</p>
-              </div>
-            </article>
-            <article class="portrait-card">
-              <div class="arch"><img src="assets/img/mika-portrait.jpg" alt="MiKA 占卜桌與來訪者互動場景" width="896" height="1200" loading="lazy"></div>
-              <div class="portrait-content">
-                <h3>安心對談空間</h3>
-                <p>在安靜而真實的對談裡，你可以先放下緊繃，讓問題被好好聽見，也讓心裡的方向慢慢浮現。</p>
-              </div>
-            </article>
+            <div class="arch portrait-photo"><img src="assets/img/mika-soul.webp" alt="主理人 MiKA" width="1122" height="1402" loading="lazy"></div>
+            <div class="portrait-texts">
+              <article class="portrait-card">
+                <div class="portrait-content">
+                  <h3>主理人 MiKA</h3>
+                  <p>用穩定、柔和且有邏輯的方式陪伴每一次提問，讓占卜不只是回答問題，也是一段回到自己內在的整理歷程。</p>
+                </div>
+              </article>
+              <article class="portrait-card">
+                <div class="portrait-content">
+                  <h3>安心對談空間</h3>
+                  <p>在安靜而真實的對談裡，你可以先放下緊繃，讓問題被好好聽見，也讓心裡的方向慢慢浮現。</p>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </section>
