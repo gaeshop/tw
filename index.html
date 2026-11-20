@@ -19,8 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
   <meta property="og:image" content="https://gae.tw/assets/img/hero-forest.jpg">
   <link rel="icon" href="assets/img/logo.jpg">
-  <link rel="preload" as="image" href="assets/img/hero-forest-plate.jpg">
-  <link rel="preload" as="image" href="assets/img/hero-girl.webp">
+  <link rel="preload" as="image" href="assets/img/hero-forest.jpg">
   <style>
     :root{
       --mist:#F1E8DA;
@@ -233,7 +232,7 @@
     .mood-card{margin:0}
     .mood-card img{width:100%;aspect-ratio:1600/872;object-fit:cover;border-radius:10px;border:1px solid var(--rule-light)}
     .mood-card figcaption{padding-top:12px;font-family:var(--serif);font-size:14px;color:rgba(246,244,236,.66)}
-    .small-gallery{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;margin-top:72px;padding-top:56px;border-top:1px solid var(--rule-light)}
+    .small-gallery{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;padding-bottom:28px}
     .small-card img{width:100%;aspect-ratio:402/550;object-fit:cover;border-radius:10px;transition:transform .3s ease}
     .small-card:nth-child(even){transform:translateY(28px);--rest:28px}
     .small-card:hover img{transform:rotate(-2deg) scale(1.03)}
@@ -337,29 +336,9 @@
     .hero::before{display:none}
     .scene{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:#1f1513}
     .stage{position:absolute;left:0;top:0;width:1600px;aspect-ratio:1600/892;transform-origin:0 0}
-    .stage .bg{position:absolute;inset:0;background:url('assets/img/hero-forest-plate.jpg') center/100% 100% no-repeat;transform-origin:49.7% 62%;will-change:transform,opacity}
-    .stage .bg-a{animation:fwd 22s linear infinite}
-    .stage .bg-b{animation:fwd 22s linear -11s infinite, fade 22s linear -11s infinite}
-    @keyframes fwd{from{transform:scale(1)}to{transform:scale(1.22)}}
-    @keyframes fade{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
-    .girl{position:absolute;left:43.25%;top:30.942%;width:12.6875%;transform-origin:52% 100%;animation:sway 1.3s ease-in-out infinite}
-    .girl img{width:100%;height:auto;display:block;animation:step .65s ease-in-out infinite}
-    @keyframes step{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.1%)}}
-    @keyframes sway{0%,100%{transform:rotate(-.9deg)}50%{transform:rotate(.9deg)}}
-    .cat-wrap{position:absolute;left:56.3125%;top:63.229%;width:8.75%;transform-origin:50% 100%;will-change:transform}
-    .cat-flip{transform-origin:50% 100%;transition:transform .35s ease}
-    .cat-wrap.left .cat-flip{transform:scaleX(-1)}
-    .cat-body{position:relative}
-    .cat-body img{display:block;width:100%;height:auto}
-    .cat-body .cat-tail{position:absolute;left:52.857%;top:-19.333%;width:45.714%;transform-origin:39% 92%;animation:wag 1.6s ease-in-out infinite}
-    .cat-wrap.play .cat-tail{animation-duration:.45s}
-    .cat-wrap.trot .cat-body{animation:trot .32s ease-in-out infinite}
-    .cat-wrap.crouch .cat-body{transform:translateY(5%) scaleY(.93);transition:transform .25s}
-    @keyframes trot{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-3%) rotate(-1.5deg)}75%{transform:translateY(-3%) rotate(1.5deg)}}
-    @keyframes wag{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(12deg)}}
-    .cat-shadow{position:absolute;left:12%;right:8%;bottom:-3%;height:9%;border-radius:50%;background:radial-gradient(rgba(10,6,4,.55),transparent 70%);transform-origin:center}
-    .toy{position:absolute;left:0;top:0;width:.55%;aspect-ratio:1;border-radius:50%;background:#fff3cf;box-shadow:0 0 12px 5px rgba(240,214,150,.75),0 0 30px 10px rgba(230,208,166,.3);animation:flicker 1.7s ease-in-out infinite;will-change:transform}
-    @keyframes flicker{0%,100%{opacity:1}40%{opacity:.55}60%{opacity:.95}80%{opacity:.4}}
+    .stage .bg{position:absolute;inset:0;background:url('assets/img/hero-forest.jpg') center/100% 100% no-repeat;transform-origin:49.7% 62%;will-change:transform}
+    .stage .bg-a{animation:fwd 26s ease-in-out infinite alternate}
+    @keyframes fwd{from{transform:scale(1)}to{transform:scale(1.08)}}
     .scene::after{
       content:"";position:absolute;inset:0;z-index:3;
       background:
@@ -459,6 +438,28 @@
       .hero h1 .ch{opacity:1;transform:none;filter:none}
       .fireflies{display:none}
     }
+
+    /* ================= 靈魂寄念所 ================= */
+    .soul-section{background:#161210;color:var(--paper);position:relative;overflow:hidden;isolation:isolate}
+    .soul-section::before{content:"";position:absolute;inset:-20% -10% auto auto;width:60%;height:120%;z-index:-1;background:radial-gradient(ellipse at 70% 30%,rgba(199,165,108,.16),transparent 60%)}
+    .soul-section .kicker{color:var(--lumen-soft);border-color:var(--rule-light);text-transform:none}
+    .soul-section .section-title h2{color:var(--lumen-soft);font-size:clamp(34px,4.4vw,56px);letter-spacing:.2em}
+    .soul-section .section-title p{color:rgba(251,246,238,.72)}
+    .soul-section .section-title p.soul-tagline{font-family:var(--serif);font-size:clamp(17px,1.6vw,20px);line-height:2;color:var(--lumen-soft)}
+    .soul-plans{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--rule-light);border-radius:14px;overflow:hidden}
+    .soul-plan{padding:30px 26px 28px;border-right:1px solid var(--rule-light);transition:background .3s}
+    .soul-plan:last-child{border-right:0}
+    .soul-plan:hover{background:rgba(199,165,108,.07)}
+    .soul-plan .en{font-family:var(--latin);font-style:italic;font-size:15px;color:var(--lumen);letter-spacing:.08em}
+    .soul-plan h3{font-size:20px;margin:6px 0 14px;color:var(--paper)}
+    .soul-plan .amt{font-family:var(--latin);font-size:40px;line-height:1;color:var(--lumen-soft)}
+    .soul-plan .amt small{font-size:13px;margin-right:6px;color:rgba(251,246,238,.55);font-family:var(--sans)}
+    .soul-plan p{margin-top:12px;font-size:14px;color:rgba(251,246,238,.62)}
+    .soul-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;margin-top:40px}
+    .soul-foot .hero-actions{margin-top:0}
+    .soul-note{font-size:13px;color:rgba(251,246,238,.55)}
+    @media (max-width:1080px){.soul-plans{grid-template-columns:repeat(2,minmax(0,1fr))}.soul-plan:nth-child(2){border-right:0}.soul-plan:nth-child(-n+2){border-bottom:1px solid var(--rule-light)}}
+    @media (max-width:680px){.soul-plan{padding:22px 18px}.soul-plan .amt{font-size:32px}}
   </style>
 
   <!-- SEO / AEO / GEO：讓搜尋引擎與 AI 摘要更容易理解本頁 -->
@@ -514,7 +515,7 @@
           "name": "MiKA"
         },
         "areaServed": ["台灣", "苗栗", "線上諮詢"],
-        "serviceType": ["直覺占卜", "塔羅占卜", "元辰宮", "桃花宮", "福德宮", "文昌宮", "流年占卜", "能量引導"],
+        "serviceType": ["靈魂解讀", "直覺占卜", "塔羅占卜", "元辰宮", "桃花宮", "福德宮", "文昌宮", "流年占卜", "能量引導"],
         "knowsAbout": ["感情占卜", "工作占卜", "人際關係", "年度運勢", "自我整理", "能量整理"],
         "sameAs": ["https://www.instagram.com/gae.card/"],
         "contactPoint": {
@@ -529,7 +530,11 @@
           {"@type": "Offer", "name": "桃花宮", "price": "600", "priceCurrency": "TWD", "description": "看見人緣情感的流動，理解關係中的期待與吸引力。"},
           {"@type": "Offer", "name": "福德宮", "price": "600", "priceCurrency": "TWD", "description": "整理祝福助力、生活穩定感與貴人能量。"},
           {"@type": "Offer", "name": "文昌宮", "price": "600", "priceCurrency": "TWD", "description": "聚焦學習、考試、工作規劃與事業節奏。"},
-          {"@type": "Offer", "name": "流年", "price": "1200", "priceCurrency": "TWD", "description": "洞悉年度運勢，掌握階段主題、提醒與適合發力的位置。"}
+          {"@type": "Offer", "name": "流年", "price": "1200", "priceCurrency": "TWD", "description": "洞悉年度運勢，掌握階段主題、提醒與適合發力的位置。"},
+          {"@type": "Offer", "name": "靈魂寄念所｜單題", "price": "1000", "priceCurrency": "TWD", "description": "靈魂解讀，一題，15 分鐘內。", "url": "https://gae.tw/soul/"},
+          {"@type": "Offer", "name": "靈魂寄念所｜4 宮位", "price": "1500", "priceCurrency": "TWD", "description": "靈魂解讀，4 宮位解讀。", "url": "https://gae.tw/soul/"},
+          {"@type": "Offer", "name": "靈魂寄念所｜8 宮位", "price": "2000", "priceCurrency": "TWD", "description": "靈魂解讀，8 宮位解讀。", "url": "https://gae.tw/soul/"},
+          {"@type": "Offer", "name": "靈魂寄念所｜16 宮位", "price": "3600", "priceCurrency": "TWD", "description": "靈魂解讀，16 宮位解讀。", "url": "https://gae.tw/soul/"}
         ]
       },
       {
@@ -576,6 +581,7 @@
       <nav class="nav" aria-label="主要選單">
         <a href="#about">關於品牌</a>
         <a href="#services">服務項目</a>
+        <a href="#soul">靈魂寄念所</a>
         <a href="#booking">預約表單</a>
         <a href="#gallery">胖虎貓形象</a>
         <a class="cta" href="#contact">立即詢問</a>
@@ -605,18 +611,6 @@
         <div class="scene" aria-hidden="true">
           <div class="stage">
             <div class="bg bg-a"></div>
-            <div class="bg bg-b"></div>
-            <div class="girl"><img src="assets/img/hero-girl.webp" alt="" width="203" height="433"></div>
-            <div class="cat-wrap">
-              <div class="cat-flip">
-                <div class="cat-shadow"></div>
-                <div class="cat-body">
-                  <img src="assets/img/hero-cat.webp" alt="" width="140" height="150">
-                  <img class="cat-tail" src="assets/img/hero-cat-tail.webp" alt="" width="64" height="77">
-                </div>
-              </div>
-            </div>
-            <div class="toy"></div>
           </div>
           <div class="tone"></div>
           <div class="beams"><i></i><i></i><i></i></div>
@@ -733,6 +727,32 @@
         </div>
       </section>
 
+      <section class="soul-section" id="soul">
+        <div class="container">
+          <div class="section-title">
+            <div class="kicker">Soul · Remembrance</div>
+            <div>
+              <h2>靈魂寄念所</h2>
+              <p class="soul-tagline">未盡之言，未盡之事，在這裡被好好聽見；<br>在一個靈魂身上看見自己，在放下之中讓靈魂解脫。</p>
+              <p>專門處理靈魂解讀。針對靈魂與靈魂之間的議題課題，聆聽無形亡者靈魂的未盡之言與未盡之事；也透過你與這個靈魂的連結，看見自己的議題，理解連結的方向，讓自己的靈魂解放、放下，並從糾纏中解脫。</p>
+            </div>
+          </div>
+          <div class="soul-plans">
+            <div class="soul-plan"><span class="en">Single</span><h3>單題</h3><div class="amt"><small>NT$</small>1,000</div><p>一題，15 分鐘內</p></div>
+            <div class="soul-plan"><span class="en">IV Houses</span><h3>4 宮位</h3><div class="amt"><small>NT$</small>1,500</div><p>4 宮位解讀</p></div>
+            <div class="soul-plan"><span class="en">VIII Houses</span><h3>8 宮位</h3><div class="amt"><small>NT$</small>2,000</div><p>8 宮位解讀</p></div>
+            <div class="soul-plan"><span class="en">XVI Houses</span><h3>16 宮位</h3><div class="amt"><small>NT$</small>3,600</div><p>16 宮位解讀</p></div>
+          </div>
+          <div class="soul-foot">
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="soul/">查看靈魂寄念所完整說明</a>
+              <a class="btn btn-secondary" href="https://www.instagram.com/gae.card/" target="_blank" rel="noopener">私訊 GA·E 預約</a>
+            </div>
+            <p class="soul-note">全程透過 GA·E 官方 Instagram 私訊進行。GA·E Mika 保留接案與否的權利。</p>
+          </div>
+        </div>
+      </section>
+
       <section class="booking-section" id="booking">
         <div class="container">
           <div class="booking-shell">
@@ -831,12 +851,6 @@
               <h2>早班胖虎貓，陪你把心安放下來。</h2>
               <p>早班胖虎貓像一份溫柔的陪伴，提醒你：答案不需要被逼出來，你可以先讓自己被安放、被照顧。</p>
             </div>
-          </div>
-          <div class="mood-grid">
-            <figure class="mood-card"><img src="assets/img/blessing-1.jpg" alt="早班胖虎貓祝福卡形象圖 1" width="1600" height="872" loading="lazy"><figcaption>早班胖虎貓祝福卡</figcaption></figure>
-            <figure class="mood-card"><img src="assets/img/blessing-2.jpg" alt="早班胖虎貓祝福卡形象圖 2" width="1600" height="872" loading="lazy"><figcaption>早班胖虎貓祝福卡</figcaption></figure>
-            <figure class="mood-card"><img src="assets/img/blessing-3.jpg" alt="早班胖虎貓祝福卡形象圖 3" width="1600" height="882" loading="lazy"><figcaption>早班胖虎貓祝福卡</figcaption></figure>
-            <figure class="mood-card"><img src="assets/img/blessing-4.jpg" alt="早班胖虎貓祝福卡形象圖 4" width="1600" height="872" loading="lazy"><figcaption>早班胖虎貓祝福卡</figcaption></figure>
           </div>
           <div class="small-gallery">
             <div class="small-card"><img src="assets/img/guardian-1.jpg" alt="早班胖虎貓品牌形象卡" width="402" height="550" loading="lazy"><span>品牌守護卡</span></div>
@@ -972,55 +986,6 @@
     layoutStage();
     window.addEventListener('resize', layoutStage);
 
-    // ---------- the cat: follows behind, chasing a firefly left and right ----------
-    (function catPlay() {
-      const cat = stage && stage.querySelector('.cat-wrap');
-      const toy = stage && stage.querySelector('.toy');
-      if (!cat || !toy || reduce) return;
-      // all units in stage px (1600 x 892)
-      const HOME_X = 971, GROUND = 0;           // cat centre x in the photo
-      const MIN_X = 640, MAX_X = 1130;          // roam band behind the girl
-      let cx = HOME_X, vx = 0, hopT = -1, hopH = 0;
-      let tx = 760, ty = 600, fx = 1050, fy = 560; // toy target / current
-      let state = 'chase', wait = 0, last = performance.now(), flip = false, t0 = 0;
-      const rand = (a, b) => a + Math.random() * (b - a);
-      function newToy() {
-        let n; do { n = rand(MIN_X, MAX_X); } while (Math.abs(n - cx) < 160);
-        tx = n; ty = rand(520, 620);
-      }
-      newToy();
-      function frame(now) {
-        const dt = Math.min(0.05, (now - last) / 1000); last = now; t0 += dt;
-        // toy drifts toward its target with a little wobble
-        fx += (tx + Math.sin(t0 * 1.7) * 18 - fx) * Math.min(1, dt * 1.6);
-        fy += (ty + Math.cos(t0 * 2.3) * 14 - fy) * Math.min(1, dt * 1.6);
-        const dx = fx - cx;
-        if (state === 'chase') {
-          const dir = Math.sign(dx);
-          const target = Math.abs(dx) > 40 ? dir * 150 : 0;
-          vx += (target - vx) * Math.min(1, dt * 3);
-          cx += vx * dt;
-          if (dir !== 0 && Math.abs(vx) > 20) flip = dir < 0;
-          cat.classList.toggle('trot', Math.abs(vx) > 30);
-          cat.classList.remove('crouch', 'play');
-          if (Math.abs(dx) < 50) { state = 'crouch'; wait = rand(.35, .7); vx = 0; cat.classList.remove('trot'); cat.classList.add('crouch', 'play'); }
-        } else if (state === 'crouch') {
-          wait -= dt; if (wait <= 0) { state = 'pounce'; hopT = 0; hopH = rand(40, 70); cat.classList.remove('crouch'); vx = (flip ? -1 : 1) * 120; newToy(); }
-        } else if (state === 'pounce') {
-          hopT += dt / .5; cx += vx * dt;
-          if (hopT >= 1) { hopT = -1; state = 'sit'; wait = rand(.6, 1.6); vx = 0; }
-        } else if (state === 'sit') {
-          wait -= dt; if (wait <= 0) { state = 'chase'; cat.classList.remove('play'); }
-        }
-        cx = Math.min(MAX_X, Math.max(MIN_X, cx));
-        const lift = hopT >= 0 ? Math.sin(Math.PI * hopT) * hopH : 0;
-        cat.style.transform = `translate(${cx - HOME_X}px, ${-lift}px)`;
-        cat.classList.toggle('left', flip);
-        toy.style.transform = `translate(${fx}px, ${fy}px)`;
-        requestAnimationFrame(frame);
-      }
-      requestAnimationFrame(frame);
-    })();
 
     // headline: ink each character in, one by one
     const h1 = document.querySelector('.hero h1');
@@ -1055,7 +1020,7 @@
 
     // scroll reveals
     const groups = [
-      ['.section-title, .about-copy, .portrait-content, .booking-info, .booking-form, .faq-panel details, .testimonial-card, .contact-list div, .mood-card, .oath-grid > *', 90],
+      ['.section-title, .about-copy, .portrait-content, .booking-info, .booking-form, .faq-panel details, .testimonial-card, .contact-list div, .soul-plan, .soul-foot, .oath-grid > *', 90],
       ['.service-card', 110], ['.small-card', 80], ['.arch', 0]
     ];
     const tilts = [-4, 3, -2, 4, -3, 2];
